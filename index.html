@@ -556,10 +556,10 @@
   .mc-table thead th:last-child{border-right:none}
   .mc-table thead th:nth-child(1),.mc-table tbody td:nth-child(1){width:44px;text-align:center}
   .mc-table thead th:nth-child(2),.mc-table tbody td:nth-child(2){width:96px}
-  .mc-table thead th:nth-child(4),.mc-table tbody td:nth-child(4){width:130px}
-  .mc-table thead th:nth-child(5),.mc-table tbody td:nth-child(5){width:140px}
-  .mc-table thead th:nth-child(6),.mc-table tbody td:nth-child(6){width:210px}
-  .mc-table thead th:nth-child(7),.mc-table tbody td:nth-child(7){width:54px;text-align:center}
+  .mc-table thead th:nth-child(4),.mc-table tbody td:nth-child(4){width:110px}
+  .mc-table thead th:nth-child(5),.mc-table tbody td:nth-child(5){width:120px}
+  .mc-table thead th:nth-child(6),.mc-table tbody td:nth-child(6){width:280px}
+  .mc-table thead th:nth-child(7),.mc-table tbody td:nth-child(7){width:50px;text-align:center}
   .mc-table tbody td{padding:10px 12px;border-bottom:1px solid #eef2ef;border-right:1px solid #f3f6f4;vertical-align:top;color:#3a4a42;line-height:1.5;word-wrap:break-word;overflow-wrap:break-word}
   .mc-table tbody td:last-child{border-right:none}
   .mc-table tbody td:first-child{text-align:center;color:#8a9690;font-size:.78rem}
@@ -568,7 +568,7 @@
   .mc-table tbody tr:nth-child(even):hover{background:#f7fbf8}
   .mc-table .mc-code{font-family:'Fraunces',serif;color:var(--g2);font-weight:600;font-size:.8rem;white-space:nowrap}
   .mc-table .mc-content{white-space:pre-line;word-wrap:break-word}
-  .mc-table .mc-hss-link{display:inline-flex;align-items:center;gap:4px;color:var(--g2);font-size:.78rem;text-decoration:none;padding:3px 8px;border-radius:6px;background:#eaf5ef;transition:all .2s;white-space:nowrap}
+  .mc-table .mc-hss-link{display:inline-flex;align-items:flex-start;gap:4px;color:var(--g2);font-size:.78rem;text-decoration:none;padding:4px 8px;border-radius:6px;background:#eaf5ef;transition:all .2s;white-space:normal;word-break:break-word;line-height:1.35;max-width:100%}
   .mc-table .mc-hss-link:hover{background:var(--g2);color:white}
   .mc-table .mc-hss-link.empty{background:#f3f6f4;color:#8a9690;cursor:default}
   .mc-folder{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;text-decoration:none;font-size:1.1rem;transition:all .2s}
@@ -710,7 +710,7 @@
   <div class="mc-head">
     <span class="kicker">Kiểm định chất lượng</span>
     <h2 class="display">Bảng mã hóa minh chứng</h2>
-    <p>5 Tiêu chuẩn · 25 Tiêu chí · Áp dụng cho trường mầm non</p>
+    <p>5 Tiêu chuẩn · 22 Tiêu chí · Cập nhật theo TT 22/2024/TT-BGDĐT</p>
     <div class="mc-actions">
       <button type="button" class="rec-citation-btn" onclick="this.parentElement.nextElementSibling.classList.toggle('open');this.classList.toggle('open')" aria-expanded="false">
         <span class="rec-citation-icon">📜</span>
@@ -878,7 +878,7 @@
           </div>
           <div class="step-body">
             <h4>⭐ Xem Bảng mã hóa minh chứng & In theo mẫu</h4>
-            <p>Cuộn đến <b>"Bảng mã hóa minh chứng"</b> → Theo <b>TT 19/2018 + TT 22/2024</b> gồm <b>5 tiêu chuẩn · 25 tiêu chí · 81 minh chứng</b>. Nhấn vào mỗi Tiêu chuẩn để xổ xuống các tiêu chí và minh chứng con. Mỗi MC có mã dạng <code>[H1-1.1-01]</code> kèm <b>mã HSS liên quan</b> để mở thẳng thư mục Drive tương ứng.</p>
+            <p>Cuộn đến <b>"Bảng mã hóa minh chứng"</b> → Theo <b>TT 19/2018 sửa đổi bởi TT 22/2024</b> gồm <b>5 tiêu chuẩn · 22 tiêu chí · 81 minh chứng</b> (TT 22/2024 đã gộp TC3 còn 3 tiêu chí). Nhấn vào mỗi Tiêu chuẩn để xổ xuống các tiêu chí và minh chứng con. Mỗi MC có mã dạng <code>[H1-1.1-01]</code> kèm <b>mã HSS liên quan</b> để mở thẳng thư mục Drive tương ứng.</p>
             <div class="step-tip">🖨 <b>Nút "In theo mẫu"</b> (viền cam) sinh bản in <b>A4 ngang</b> chuẩn Phụ lục CV 5942/BGDĐT-QLCL — có quốc hiệu, tiêu đề, bảng 7 cột (STT, Mã MC, Tên MC, Ngày BH, Nơi BH, Mã HSS, Ghi chú), phần ký Hiệu trưởng. Tự điền tên trường, địa chỉ, năm học hiện tại.</div>
           </div>
         </div>
@@ -973,7 +973,7 @@
             <ul style="margin:8px 0 10px 20px;padding:0;font-size:.86rem;color:#5a6b64;line-height:1.7">
               <li><b>🏫 Thông tin</b> — sửa tên trường, địa chỉ, SĐT, email, năm học, hiệu trưởng, chủ đề màu</li>
               <li><b>📋 Hồ sơ số</b> — sửa tên/link Drive từng hồ sơ, thêm hồ sơ mới, tìm nhanh</li>
-              <li><b>🎯 Minh chứng KĐCL</b> ⭐ — CRUD đầy đủ: sửa tên tiêu chí, thêm/xóa minh chứng, nút <b>"🔄 Khôi phục khung TT 19/2018"</b></li>
+              <li><b>🎯 Minh chứng KĐCL</b> ⭐ — CRUD đầy đủ: sửa tên tiêu chí, thêm/xóa minh chứng, nút <b>"🔄 Khôi phục khung TT 22/2024/2018"</b></li>
               <li><b>📤 Nhập dữ liệu</b> — tải Excel giáo viên & học sinh (có sẵn file mẫu)</li>
               <li><b>🔑 Mật khẩu</b> — đổi mật khẩu admin</li>
             </ul>
@@ -1190,7 +1190,8 @@
               <option value="3">Tiêu chuẩn 4 — Quan hệ NT–GĐ–XH</option>
               <option value="4">Tiêu chuẩn 5 — Hoạt động & kết quả CS–GD trẻ</option>
             </select>
-            <button class="adm-btn adm-btn-outline" style="padding:9px 16px;font-size:.82rem;white-space:nowrap" onclick="admMCReset()" title="Khôi phục khung 25 tiêu chí gốc theo TT 19/2018 (giữ các MC đã nhập)">🔄 Khôi phục khung TT 19</button>
+            <button class="adm-btn adm-btn-outline" style="padding:9px 16px;font-size:.82rem;white-space:nowrap" onclick="admMCReset()" title="Khôi phục khung 22 tiêu chí theo TT 19/2018 sửa đổi bởi TT 22/2024 (giữ các MC đã nhập)">🔄 Khôi phục khung TT 22/2024</button>
+            <button class="adm-btn adm-btn-danger" style="padding:9px 16px;font-size:.82rem;white-space:nowrap" onclick="admMCResetFromSeed()" title="Ghi đè toàn bộ sheet MinhChung bằng DATA_MINHCHUNG trong GAS (81 MC chuẩn TT 22/2024). KHÔNG đụng các sheet khác.">⚡ Nạp lại 81 MC từ GAS</button>
           </div>
           <div id="admMCBody"><p style="padding:20px;text-align:center;color:#8a9690">Chọn Tiêu chuẩn để bắt đầu.</p></div>
           <div class="adm-actions">
@@ -1635,10 +1636,10 @@
   // ============ FAQ ============
   const faqs = [
     {q:'Làm sao tìm nhanh một hồ sơ hoặc minh chứng?', a:'Dùng ô tìm kiếm ở đầu mục. Mục "Hồ sơ số": gõ tên hoặc mã (VD: "thi đua", "1.2.1"). Mục "Minh chứng KĐCL": gõ mã MC (VD: "H1-1.1-01") hoặc từ khóa trong nội dung. Danh sách tự lọc ngay lập tức.'},
-    {q:'⭐ Bảng mã hóa minh chứng có những tính năng gì?', a:'Hiển thị đầy đủ 5 tiêu chuẩn · 25 tiêu chí · 81 minh chứng theo TT 19/2018 (sửa đổi TT 22/2024). Mỗi MC có mã [H1-1.1-01] và mã HSS liên kết — bấm biểu tượng 📁 để mở thẳng thư mục Drive. Có nút 📜 "Căn cứ pháp lý" để xem văn bản quy định.'},
+    {q:'⭐ Bảng mã hóa minh chứng có những tính năng gì?', a:'Hiển thị đầy đủ 5 tiêu chuẩn · 22 tiêu chí · 81 minh chứng — cập nhật theo TT 22/2024 (TC3 đã gộp từ 6 → 3 tiêu chí). Mỗi MC có mã [H1-1.1-01] và mã HSS liên kết — bấm biểu tượng 📁 để mở thẳng thư mục Drive. Có nút 📜 "Căn cứ pháp lý" để xem văn bản quy định.'},
     {q:'⭐ Nút "In theo mẫu" hoạt động như thế nào?', a:'Bấm nút 🖨 "In theo mẫu" (viền cam, cạnh nút Căn cứ pháp lý) → sinh ra bản in A4 ngang đúng Phụ lục CV 5942/BGDĐT-QLCL: có quốc hiệu, tên trường, tiêu đề, bảng 7 cột đầy đủ (STT, Mã MC, Tên, Ngày BH, Nơi BH, Mã HSS, Ghi chú), phần ký Hiệu trưởng. Tự điền tên trường, địa chỉ, năm học từ cấu hình. Chọn "Save as PDF" để xuất file.'},
     {q:'⭐ Sửa/xóa/thêm minh chứng ở đâu?', a:'Vào Admin → tab 🎯 Minh chứng → chọn Tiêu chuẩn từ dropdown → xuất hiện các Tiêu chí + minh chứng con dạng form. Sửa trực tiếp các trường (Mã MC, Nội dung, Ngày BH, Nơi BH, Mã HSS). Nút ＋ Thêm minh chứng tự sinh mã [Hn-a.b-XX]. Nút 🗑 Xóa có xác nhận. Bấm 💾 "Lưu lên Google Sheet" để đồng bộ.'},
-    {q:'Nút "🔄 Khôi phục khung TT 19/2018" làm gì?', a:'Khôi phục cấu trúc chuẩn 25 tiêu chí theo TT 19/2018. Các minh chứng đã nhập được giữ nguyên, chỉ bổ sung các tiêu chí còn thiếu và sửa tên tiêu chí về đúng quy định. Dùng khi cập nhật lần đầu từ phiên bản cũ.'},
+    {q:'Nút "🔄 Khôi phục khung TT 22/2024" làm gì?', a:'Khôi phục cấu trúc chuẩn 22 tiêu chí theo TT 19/2018 đã được TT 22/2024 sửa đổi (TC3 còn 3 tiêu chí). Các minh chứng đã nhập được giữ nguyên, chỉ bổ sung các tiêu chí còn thiếu và sửa tên tiêu chí về đúng quy định. Dùng khi cập nhật lần đầu từ phiên bản cũ.'},
     {q:'Vì sao có hồ sơ hiện chấm xám?', a:'Chấm xám = chưa có link Drive. Vào Admin → tab 📋 Hồ sơ số → dán link Drive vào ô tương ứng → bấm 💾 Lưu thay đổi → chấm chuyển xanh + nút "Mở" xuất hiện.'},
     {q:'Dữ liệu cập nhật thế nào?', a:'Toàn bộ dữ liệu lưu trên Google Sheet. Sửa qua Admin → tự đồng bộ. Hoặc sửa trực tiếp Sheet → vào web bấm Admin → tab Nhập dữ liệu → "🔄 Làm mới dữ liệu". Dữ liệu cache 10 phút trong trình duyệt.'},
     {q:'Làm sao đổi tên trường, địa chỉ, hiệu trưởng?', a:'Admin → tab 🏫 Thông tin → sửa các ô → 💾 Lưu thay đổi. Các thay đổi này lưu cục bộ (trình duyệt hiện tại). Muốn áp dụng cho mọi thiết bị: sửa trực tiếp Sheet "CauHinh" cột "Giá trị".'},
@@ -1712,7 +1713,7 @@
   let MINHCHUNG = [];
   const MC_TC_ICONS = ['🏫','👩‍🏫','🏢','🤝','👶'];
 
-  // ===== SEED: Khung 5 Tiêu chuẩn / 25 Tiêu chí theo TT 19/2018/TT-BGDĐT (mầm non) =====
+  // ===== SEED: Khung 5 Tiêu chuẩn / 22 Tiêu chí theo TT 19/2018 sửa đổi bởi TT 22/2024 (mầm non) =====
   const MC_SEED = [
     { name:'Tiêu chuẩn 1', desc:'Tổ chức và quản lý nhà trường', criteria:[
       {code:'1.1', desc:'Phương hướng, chiến lược xây dựng và phát triển nhà trường', evidences:[]},
@@ -1732,12 +1733,9 @@
       {code:'2.3', desc:'Đối với nhân viên', evidences:[]}
     ]},
     { name:'Tiêu chuẩn 3', desc:'Cơ sở vật chất và thiết bị dạy học', criteria:[
-      {code:'3.1', desc:'Diện tích, khuôn viên và sân vườn', evidences:[]},
-      {code:'3.2', desc:'Khối phòng nhóm trẻ, lớp mẫu giáo và khối phòng phục vụ học tập', evidences:[]},
-      {code:'3.3', desc:'Khối phòng hành chính - quản trị', evidences:[]},
-      {code:'3.4', desc:'Khối phòng tổ chức ăn', evidences:[]},
-      {code:'3.5', desc:'Thiết bị, đồ dùng, đồ chơi', evidences:[]},
-      {code:'3.6', desc:'Khu vệ sinh, hệ thống cấp thoát nước', evidences:[]}
+      {code:'3.1', desc:'Địa điểm, quy mô, diện tích đảm bảo theo quy định của Bộ Giáo dục và Đào tạo', evidences:[]},
+      {code:'3.2', desc:'Các hạng mục công trình đảm bảo tiêu chuẩn cơ sở vật chất tối thiểu (khối phòng hành chính, nuôi dưỡng - chăm sóc - giáo dục trẻ, tổ chức ăn, phụ trợ)', evidences:[]},
+      {code:'3.3', desc:'Hạ tầng kỹ thuật, các hạng mục công trình kiên cố và thiết bị dạy học', evidences:[]}
     ]},
     { name:'Tiêu chuẩn 4', desc:'Quan hệ giữa nhà trường, gia đình và xã hội', criteria:[
       {code:'4.1', desc:'Ban đại diện cha mẹ trẻ', evidences:[]},
@@ -1757,15 +1755,31 @@
     return MC_SEED.map((seedTC, i) => {
       const matched = src.find(g => (g.name||'').trim() === seedTC.name) || src[i] || {};
       const gasCriteria = matched.criteria || [];
+      // Tập các code tiêu chí trong seed (VD: {'3.1','3.2','3.3'})
+      const seedCodes = new Set(seedTC.criteria.map(c => c.code));
+      // Các tiêu chí cũ trong GAS KHÔNG còn trong seed (VD: 3.4, 3.5, 3.6 cũ khi TT 22/2024 gộp)
+      // → gom tất cả minh chứng mồ côi để dồn vào tiêu chí CUỐI CÙNG của seed (không mất dữ liệu)
+      const orphanEvidences = [];
+      gasCriteria.forEach(gCh => {
+        const code = (gCh.code||'').trim();
+        if (!seedCodes.has(code) && Array.isArray(gCh.evidences)) {
+          gCh.evidences.forEach(ev => orphanEvidences.push(ev));
+        }
+      });
       return {
         name: seedTC.name,
-        desc: matched.desc || seedTC.desc,
-        criteria: seedTC.criteria.map(seedCH => {
+        desc: seedTC.desc,  // luôn dùng desc từ seed (đúng chuẩn TT 22/2024)
+        criteria: seedTC.criteria.map((seedCH, idx) => {
           const matchedCH = gasCriteria.find(g => (g.code||'').trim() === seedCH.code) || {};
+          let evidences = Array.isArray(matchedCH.evidences) ? matchedCH.evidences.slice() : [];
+          // Tiêu chí cuối cùng của tiêu chuẩn → nhận thêm các MC mồ côi
+          if (idx === seedTC.criteria.length - 1 && orphanEvidences.length) {
+            evidences = evidences.concat(orphanEvidences);
+          }
           return {
             code: seedCH.code,
-            desc: matchedCH.desc || seedCH.desc,
-            evidences: Array.isArray(matchedCH.evidences) ? matchedCH.evidences : []
+            desc: seedCH.desc,  // luôn dùng desc từ seed
+            evidences: evidences
           };
         })
       };
@@ -1854,11 +1868,21 @@
     const schoolName = (cfg.name || 'Trường Mầm non Diễn Xuân').toUpperCase();
     const schoolAddr = cfg.address || '';
     const schoolYear = cfg.schoolYear || '';
-    const principal = (window._admGet && _admGet().principal) || '';
+    // Tên Hiệu trưởng: ưu tiên admin config → tự lấy từ DSGV (role có "Hiệu trưởng" nhưng không có "Phó")
+    let principal = (window._admGet && _admGet().principal) || '';
+    if (!principal && Array.isArray(TEACHERS)) {
+      const ht = TEACHERS.find(t => {
+        const r = (t.role || '').toLowerCase();
+        return r.includes('hiệu trưởng') && !r.includes('phó');
+      });
+      if (ht) principal = ht.name || '';
+    }
     const today = new Date();
     const dd = today.getDate(), mm = today.getMonth()+1, yy = today.getFullYear();
-    // Tên huyện/phòng GD: lấy phần sau dấu phẩy đầu tiên của địa chỉ, hoặc để "PHÒNG GIÁO DỤC VÀ ĐÀO TẠO"
-    const ubndLocation = 'UBND ' + (schoolAddr.split(',').slice(-1)[0] || 'TỈNH NGHỆ AN').trim().replace(/^(tỉnh|tp|thành phố)\s*/i,'').toUpperCase();
+    // Tách địa chỉ: ["Xã Quảng Châu", "tỉnh Nghệ An"] → UBND lấy phần đầu (xã), location line cũng chỉ lấy xã (bỏ tỉnh)
+    const addrParts = schoolAddr.split(',').map(s => s.trim()).filter(Boolean);
+    const ubndLocation = 'UBND ' + (addrParts[0] || 'XÃ/PHƯỜNG').toUpperCase();
+    const locShort = addrParts[0] || schoolAddr;
 
     // Xây dựng các dòng bảng
     let tbody = '';
@@ -1950,7 +1974,7 @@
         '</div>'+
         '<div class="spacer"></div>'+
         '<div class="sign-box right">'+
-          '<div class="loc">'+escapeHtml(schoolAddr||'')+', ngày '+dd+' tháng '+mm+' năm '+yy+'</div>'+
+          '<div class="loc">'+escapeHtml(locShort)+', ngày '+dd+' tháng '+mm+' năm '+yy+'</div>'+
           '<div class="role">Hiệu trưởng</div>'+
           '<div class="note">(Ký, ghi rõ họ tên, đóng dấu)</div>'+
           '<div class="name">'+escapeHtml(principal||'')+'</div>'+
@@ -2458,8 +2482,35 @@
     MINHCHUNG[tc].criteria[ch].evidences.forEach((x, i) => x.tt = String(i+1));
     admMCRender();
   }
+  // Nạp lại sheet MinhChung từ DATA_MINHCHUNG trong GAS (ghi đè hoàn toàn)
+  function admMCResetFromSeed(){
+    if(!confirm('⚡ Nạp lại 81 MC từ DATA_MINHCHUNG (TT 22/2024) trong GAS?
+
+✅ Ghi đè TOÀN BỘ sheet MinhChung bằng khung chuẩn 5 TC / 22 TCh / 81 MC.
+✅ Các sheet khác (DSGV, DS HS, Danh muc HSS, CauHinh, Hinh Anh) KHÔNG bị đụng.
+⚠️ Mọi chỉnh sửa thủ công trên sheet MinhChung hiện có sẽ bị MẤT.
+
+Bạn chắc chắn muốn tiếp tục?')) return;
+    const msg = document.getElementById('admMCMsg');
+    msg.textContent = '⏳ Đang nạp lại khung MC chuẩn TT 22/2024 lên Google Sheet...';
+    msg.className = 'adm-alert warn';
+    admPostToGAS({action:'resetMinhChungSeed'}, function(ok, resp){
+      if(ok){
+        const rows = (resp && typeof resp === 'object' && resp.rows) ? resp.rows : '?';
+        msg.textContent = '✅ Đã nạp lại ' + rows + ' dòng minh chứng chuẩn TT 22/2024! Đang tải lại trang sau 2 giây...';
+        msg.className = 'adm-alert ok';
+        try { localStorage.removeItem(CACHE_KEY); } catch(e){}
+        setTimeout(() => location.reload(), 2000);
+      } else {
+        msg.textContent = '❌ Lỗi: ' + (resp || 'Không kết nối được GAS. Kiểm tra đã deploy phiên bản mới chưa (có action "resetMinhChungSeed").');
+        msg.className = 'adm-alert err';
+      }
+      setTimeout(() => msg.className = 'adm-alert', 8000);
+    });
+  }
+
   function admMCReset(){
-    if(!confirm('Khôi phục khung 25 tiêu chí theo TT 19/2018?\n\n✓ Các minh chứng đã nhập sẽ được GIỮ NGUYÊN.\n✓ Các tiêu chí còn thiếu sẽ được bổ sung.\n✓ Tên tiêu chí sẽ trả về mặc định TT 19.')) return;
+    if(!confirm('Khôi phục khung 22 tiêu chí theo TT 19/2018 sửa đổi bởi TT 22/2024?\n\n✓ Các minh chứng đã nhập sẽ được GIỮ NGUYÊN.\n✓ Các tiêu chí còn thiếu sẽ được bổ sung.\n✓ Tên tiêu chí sẽ trả về mặc định.\n✓ TC3 sẽ gộp còn 3 tiêu chí theo TT 22/2024.')) return;
     // Giữ evidences hiện có, reset tên
     MINHCHUNG = MC_SEED.map((seedTC, i) => {
       const cur = MINHCHUNG[i] || {};
@@ -2475,7 +2526,7 @@
     admMCRender();
     renderMinhChung();
     const msg = document.getElementById('admMCMsg');
-    msg.textContent = '✅ Đã khôi phục khung 25 tiêu chí. Nhấn "Lưu" để ghi lên Sheet.';
+    msg.textContent = '✅ Đã khôi phục khung 22 tiêu chí theo TT 22/2024. Nhấn "Lưu" để ghi lên Sheet.';
     msg.className = 'adm-alert ok';
     setTimeout(() => msg.className = 'adm-alert', 4000);
   }
