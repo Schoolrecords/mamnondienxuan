@@ -1716,36 +1716,139 @@
   // ===== SEED: Khung 5 Tiêu chuẩn / 22 Tiêu chí theo TT 19/2018 sửa đổi bởi TT 22/2024 (mầm non) =====
   const MC_SEED = [
     { name:'Tiêu chuẩn 1', desc:'Tổ chức và quản lý nhà trường', criteria:[
-      {code:'1.1', desc:'Phương hướng, chiến lược xây dựng và phát triển nhà trường', evidences:[]},
-      {code:'1.2', desc:'Hội đồng trường và các hội đồng khác', evidences:[]},
-      {code:'1.3', desc:'Tổ chức Đảng Cộng sản Việt Nam, các đoàn thể và tổ chức khác trong nhà trường', evidences:[]},
-      {code:'1.4', desc:'Hiệu trưởng, phó hiệu trưởng, tổ chuyên môn và tổ văn phòng', evidences:[]},
-      {code:'1.5', desc:'Tổ chức nhóm trẻ và lớp mẫu giáo', evidences:[]},
-      {code:'1.6', desc:'Quản lý hành chính, tài chính và tài sản', evidences:[]},
-      {code:'1.7', desc:'Quản lý cán bộ, giáo viên và nhân viên', evidences:[]},
-      {code:'1.8', desc:'Quản lý các hoạt động giáo dục', evidences:[]},
-      {code:'1.9', desc:'Thực hiện quy chế dân chủ cơ sở', evidences:[]},
-      {code:'1.10', desc:'Đảm bảo an ninh trật tự, an toàn trường học', evidences:[]}
+      {code:'1.1', desc:'Phương hướng, chiến lược xây dựng và phát triển nhà trường', evidences:[
+        {tt:'1',code:'[H1-1.1-01]',content:'Kế hoạch chiến lược phát triển nhà trường giai đoạn 2025-2030, tầm nhìn 2035',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.1.1',note:''},
+        {tt:'2',code:'[H1-1.1-02]',content:'Kế hoạch phát triển giáo dục hằng năm',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.1.2',note:''},
+        {tt:'3',code:'[H1-1.1-03]',content:'Biên bản họp góp ý chiến lược phát triển',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.1.4',note:''},
+        {tt:'4',code:'[H1-1.1-04]',content:'Báo cáo sơ kết, tổng kết thực hiện chiến lược',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.1.6',note:''}
+      ]},
+      {code:'1.2', desc:'Hội đồng trường và các hội đồng khác', evidences:[
+        {tt:'1',code:'[H1-1.2-01]',content:'Hồ sơ Hội đồng thi đua - khen thưởng (QĐ thành lập, Kế hoạch, Quy chế, Báo cáo, QĐ khen thưởng)',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.2.1.1',note:''},
+        {tt:'2',code:'[H1-1.2-02]',content:'Hồ sơ các hội đồng khác: Hội đồng chuyên môn, Hội đồng nghiệm thu SKKN, Hội đồng các cuộc thi',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.2.1.2',note:''},
+        {tt:'3',code:'[H1-1.2-03]',content:'Quyết định thành lập Hội đồng tư vấn',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.2.1.1',note:''},
+        {tt:'4',code:'[H1-1.2-04]',content:'Nghị quyết Hội đồng trường',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'',note:''}
+      ]},
+      {code:'1.3', desc:'Tổ chức Đảng Cộng sản Việt Nam, các đoàn thể và tổ chức khác trong nhà trường', evidences:[
+        {tt:'1',code:'[H1-1.3-01]',content:'Quyết định chuẩn y cấp ủy chi bộ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.3.1.1',note:''},
+        {tt:'2',code:'[H1-1.3-02]',content:'Nghị quyết chi bộ hằng tháng',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.3.1.3',note:''},
+        {tt:'3',code:'[H1-1.3-03]',content:'Hồ sơ hoạt động Công đoàn, Đoàn TN',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.3.2',note:''},
+        {tt:'4',code:'[H1-1.3-04]',content:'Báo cáo hoạt động đoàn thể',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.3.1.5',note:''}
+      ]},
+      {code:'1.4', desc:'Hiệu trưởng, phó hiệu trưởng, tổ chuyên môn và tổ văn phòng', evidences:[
+        {tt:'1',code:'[H1-1.4-01]',content:'QĐ bổ nhiệm Hiệu trưởng, Phó Hiệu trưởng',issueDate:'',issuer:'UBND/Sở GD',hssRef:'1.4.1',note:''},
+        {tt:'2',code:'[H1-1.4-02]',content:'QĐ thành lập tổ chuyên môn, bổ nhiệm TT, TP',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.4.1',note:''},
+        {tt:'3',code:'[H1-1.4-03]',content:'Kế hoạch, biên bản sinh hoạt tổ chuyên môn',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.4.2',note:''},
+        {tt:'4',code:'[H1-1.4-04]',content:'Sổ theo dõi hoạt động tổ chuyên môn, tổ văn phòng',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.4.3',note:''}
+      ]},
+      {code:'1.5', desc:'Tổ chức nhóm trẻ và lớp mẫu giáo', evidences:[
+        {tt:'1',code:'[H1-1.5-01]',content:'Danh bạ trẻ, sổ theo dõi trẻ hàng ngày',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.1',note:''},
+        {tt:'2',code:'[H1-1.5-02]',content:'Hồ sơ tuyển sinh, biên bản phân nhóm/lớp',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.2',note:''},
+        {tt:'3',code:'[H1-1.5-03]',content:'Hồ sơ quản lý trẻ khuyết tật học hòa nhập',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.3',note:''},
+        {tt:'4',code:'[H1-1.5-04]',content:'Hồ sơ phổ cập GDMN cho trẻ 5 tuổi',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.4',note:''}
+      ]},
+      {code:'1.6', desc:'Quản lý hành chính, tài chính và tài sản', evidences:[
+        {tt:'1',code:'[H1-1.6-01]',content:'Quy chế chi tiêu nội bộ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.2.1',note:''},
+        {tt:'2',code:'[H1-1.6-02]',content:'Sổ công văn đi, đến',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.1.1',note:''},
+        {tt:'3',code:'[H1-1.6-03]',content:'Dự toán, Báo cáo quyết toán tài chính',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.2.3',note:''},
+        {tt:'4',code:'[H1-1.6-04]',content:'Sổ tổng hợp tài sản, biên bản kiểm kê',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.3.1',note:''},
+        {tt:'5',code:'[H1-1.6-05]',content:'Kế hoạch mua sắm, sửa chữa CSVC',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.3.3',note:''}
+      ]},
+      {code:'1.7', desc:'Quản lý cán bộ, giáo viên và nhân viên', evidences:[
+        {tt:'1',code:'[H1-1.7-01]',content:'Quyết định phân công nhiệm vụ CB, GV, NV',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.7.2',note:''},
+        {tt:'2',code:'[H1-1.7-02]',content:'Kế hoạch bồi dưỡng chuyên môn nghiệp vụ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.7.1',note:''},
+        {tt:'3',code:'[H1-1.7-03]',content:'Hồ sơ kiểm tra nội bộ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.7.3',note:''}
+      ]},
+      {code:'1.8', desc:'Quản lý các hoạt động giáo dục', evidences:[
+        {tt:'1',code:'[H1-1.8-01]',content:'Hồ sơ CB, GV, NV (quản lý chuyên môn)',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.8.1',note:''},
+        {tt:'2',code:'[H1-1.8-02]',content:'Kế hoạch các hoạt động lễ, hội, trải nghiệm',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.8.3',note:''},
+        {tt:'3',code:'[H1-1.8-03]',content:'Hồ sơ giáo dục tăng cường, lồng ghép nội dung',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.8.4',note:''}
+      ]},
+      {code:'1.9', desc:'Thực hiện quy chế dân chủ cơ sở', evidences:[
+        {tt:'1',code:'[H1-1.9-01]',content:'Bộ quy chế dân chủ cơ sở',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.9.1',note:''},
+        {tt:'2',code:'[H1-1.9-02]',content:'Hồ sơ công khai theo Thông tư 36/2017',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.9.2',note:''},
+        {tt:'3',code:'[H1-1.9-03]',content:'Báo cáo thực hiện QCDC cơ sở',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.9.3',note:''}
+      ]},
+      {code:'1.10', desc:'Đảm bảo an ninh trật tự, an toàn trường học', evidences:[
+        {tt:'1',code:'[H1-1.10-01]',content:'Hồ sơ PCCC',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.1',note:''},
+        {tt:'2',code:'[H1-1.10-02]',content:'Hồ sơ trường học an toàn, PCTNTT',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.2',note:''},
+        {tt:'3',code:'[H1-1.10-03]',content:'Hợp đồng cung ứng thực phẩm, Sổ kiểm thực 3 bước',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.1',note:''},
+        {tt:'4',code:'[H1-1.10-04]',content:'Giấy chứng nhận đủ điều kiện ATTP, Lưu mẫu thức ăn',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.6',note:''},
+        {tt:'5',code:'[H1-1.10-05]',content:'Kế hoạch phòng chống bạo lực học đường, an ninh trường học',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'',note:''}
+      ]}
     ]},
     { name:'Tiêu chuẩn 2', desc:'Cán bộ quản lý, giáo viên, nhân viên', criteria:[
-      {code:'2.1', desc:'Đối với hiệu trưởng, phó hiệu trưởng', evidences:[]},
-      {code:'2.2', desc:'Đối với giáo viên', evidences:[]},
-      {code:'2.3', desc:'Đối với nhân viên', evidences:[]}
+      {code:'2.1', desc:'Đối với hiệu trưởng, phó hiệu trưởng', evidences:[
+        {tt:'1',code:'[H2-2.1-01]',content:'Bằng cấp, chứng chỉ của HT, PHT',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'2.1',note:''},
+        {tt:'2',code:'[H2-2.1-02]',content:'Đánh giá chuẩn hiệu trưởng hằng năm',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'2.3.1',note:''},
+        {tt:'3',code:'[H2-2.1-03]',content:'Kết quả bồi dưỡng nghiệp vụ quản lý',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.8.2',note:''}
+      ]},
+      {code:'2.2', desc:'Đối với giáo viên', evidences:[
+        {tt:'1',code:'[H2-2.2-01]',content:'Danh sách, hồ sơ giáo viên',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'2.1',note:''},
+        {tt:'2',code:'[H2-2.2-02]',content:'Đánh giá theo Chuẩn nghề nghiệp GVMN',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'2.3.1',note:''},
+        {tt:'3',code:'[H2-2.2-03]',content:'Kế hoạch, kết quả bồi dưỡng chuyên môn GV',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.8.2',note:''},
+        {tt:'4',code:'[H2-2.2-04]',content:'Hồ sơ thi GV giỏi, SKKN',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.2.3',note:''}
+      ]},
+      {code:'2.3', desc:'Đối với nhân viên', evidences:[
+        {tt:'1',code:'[H2-2.3-01]',content:'Danh sách, hồ sơ nhân viên',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'2.1',note:''},
+        {tt:'2',code:'[H2-2.3-02]',content:'Bằng cấp, chứng chỉ nghiệp vụ nhân viên',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'2.1',note:''},
+        {tt:'3',code:'[H2-2.3-03]',content:'Đánh giá, xếp loại nhân viên hằng năm',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'2.3.2',note:''}
+      ]}
     ]},
     { name:'Tiêu chuẩn 3', desc:'Cơ sở vật chất và thiết bị dạy học', criteria:[
-      {code:'3.1', desc:'Địa điểm, quy mô, diện tích đảm bảo theo quy định của Bộ Giáo dục và Đào tạo', evidences:[]},
-      {code:'3.2', desc:'Các hạng mục công trình đảm bảo tiêu chuẩn cơ sở vật chất tối thiểu (khối phòng hành chính, nuôi dưỡng - chăm sóc - giáo dục trẻ, tổ chức ăn, phụ trợ)', evidences:[]},
-      {code:'3.3', desc:'Hạ tầng kỹ thuật, các hạng mục công trình kiên cố và thiết bị dạy học', evidences:[]}
+      {code:'3.1', desc:'Địa điểm, quy mô, diện tích đảm bảo theo quy định của Bộ Giáo dục và Đào tạo', evidences:[
+        {tt:'1',code:'[H3-3.1-01]',content:'Hồ sơ đất đai, giấy chứng nhận QSD đất, sơ đồ quy hoạch',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'3.1',note:''},
+        {tt:'2',code:'[H3-3.1-02]',content:'Kế hoạch sửa chữa, nâng cấp khuôn viên, sân vườn, diện tích khu đất',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.3.3',note:''}
+      ]},
+      {code:'3.2', desc:'Các hạng mục công trình đảm bảo tiêu chuẩn cơ sở vật chất tối thiểu (khối phòng hành chính, nuôi dưỡng - chăm sóc - giáo dục trẻ, tổ chức ăn, phụ trợ)', evidences:[
+        {tt:'1',code:'[H3-3.2-01]',content:'Danh mục các khối phòng: hành chính quản trị, nuôi dưỡng - CSGD trẻ, tổ chức ăn, phụ trợ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'3.1',note:''},
+        {tt:'2',code:'[H3-3.2-02]',content:'Biên bản kiểm tra CSVC phòng học, phòng làm việc, phòng phụ trợ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'3.1',note:''},
+        {tt:'3',code:'[H3-3.2-03]',content:'Hồ sơ bếp ăn bán trú, giấy chứng nhận đủ điều kiện ATTP',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.6',note:''},
+        {tt:'4',code:'[H3-3.2-04]',content:'Hợp đồng cung ứng thực phẩm, sổ kiểm thực 3 bước',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.1',note:''}
+      ]},
+      {code:'3.3', desc:'Hạ tầng kỹ thuật, các hạng mục công trình kiên cố và thiết bị dạy học', evidences:[
+        {tt:'1',code:'[H3-3.3-01]',content:'Hệ thống cấp nước sạch, kết quả xét nghiệm nước định kỳ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.7',note:''},
+        {tt:'2',code:'[H3-3.3-02]',content:'Hồ sơ PCCC, biên bản kiểm tra định kỳ hệ thống PCCC',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.1',note:''},
+        {tt:'3',code:'[H3-3.3-03]',content:'Hạ tầng CNTT (hệ thống mạng, máy tính, camera)',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'',note:''},
+        {tt:'4',code:'[H3-3.3-04]',content:'Sổ tài sản, danh mục thiết bị dạy học, đồ dùng, đồ chơi',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'3.2',note:''},
+        {tt:'5',code:'[H3-3.3-05]',content:'Biên bản bàn giao, kiểm kê thiết bị hằng năm',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.3.4',note:''},
+        {tt:'6',code:'[H3-3.3-06]',content:'Kế hoạch mua sắm bổ sung thiết bị, đồ dùng, đồ chơi hằng năm',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.6.3.3',note:''},
+        {tt:'7',code:'[H3-3.3-07]',content:'Biên bản kiểm tra vệ sinh khu vệ sinh, xử lý rác thải, cấp thoát nước',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'',note:''}
+      ]}
     ]},
     { name:'Tiêu chuẩn 4', desc:'Quan hệ giữa nhà trường, gia đình và xã hội', criteria:[
-      {code:'4.1', desc:'Ban đại diện cha mẹ trẻ', evidences:[]},
-      {code:'4.2', desc:'Công tác tham mưu cấp ủy đảng, chính quyền và phối hợp với các tổ chức, cá nhân của nhà trường', evidences:[]}
+      {code:'4.1', desc:'Ban đại diện cha mẹ trẻ', evidences:[
+        {tt:'1',code:'[H4-4.1-01]',content:'Hồ sơ Ban đại diện CMTE',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'4.1',note:''},
+        {tt:'2',code:'[H4-4.1-02]',content:'Biên bản họp phụ huynh',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'4.1',note:''},
+        {tt:'3',code:'[H4-4.1-03]',content:'Kế hoạch phối hợp nhà trường - gia đình',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'4.2',note:''}
+      ]},
+      {code:'4.2', desc:'Công tác tham mưu cấp ủy đảng, chính quyền và phối hợp với các tổ chức, cá nhân của nhà trường', evidences:[
+        {tt:'1',code:'[H4-4.2-01]',content:'Hồ sơ tham mưu chính quyền địa phương',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'4.2',note:''},
+        {tt:'2',code:'[H4-4.2-02]',content:'Hồ sơ VĐTT, xã hội hóa giáo dục',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'4.3',note:''},
+        {tt:'3',code:'[H4-4.2-03]',content:'Hồ sơ phối hợp y tế, công an, ban ngành',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'4.2',note:''}
+      ]}
     ]},
     { name:'Tiêu chuẩn 5', desc:'Hoạt động và kết quả nuôi dưỡng, chăm sóc, giáo dục trẻ', criteria:[
-      {code:'5.1', desc:'Thực hiện Chương trình giáo dục mầm non', evidences:[]},
-      {code:'5.2', desc:'Tổ chức hoạt động nuôi dưỡng, chăm sóc và giáo dục trẻ', evidences:[]},
-      {code:'5.3', desc:'Kết quả nuôi dưỡng và chăm sóc sức khỏe', evidences:[]},
-      {code:'5.4', desc:'Kết quả giáo dục', evidences:[]}
+      {code:'5.1', desc:'Thực hiện Chương trình giáo dục mầm non', evidences:[
+        {tt:'1',code:'[H5-5.1-01]',content:'Kế hoạch giáo dục năm học',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.1.3',note:''},
+        {tt:'2',code:'[H5-5.1-02]',content:'Kế hoạch giáo dục của nhóm/lớp',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.4.2',note:''},
+        {tt:'3',code:'[H5-5.1-03]',content:'Sổ theo dõi đánh giá sự phát triển của trẻ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'5.1',note:''},
+        {tt:'4',code:'[H5-5.1-04]',content:'Kế hoạch tổ chức các chuyên đề, hoạt động giáo dục',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.8.3',note:''}
+      ]},
+      {code:'5.2', desc:'Tổ chức hoạt động nuôi dưỡng, chăm sóc và giáo dục trẻ', evidences:[
+        {tt:'1',code:'[H5-5.2-01]',content:'Thực đơn hằng ngày, hồ sơ khẩu phần ăn',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.2',note:''},
+        {tt:'2',code:'[H5-5.2-02]',content:'Sổ kiểm thực 3 bước, lưu mẫu thức ăn',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.4',note:''},
+        {tt:'3',code:'[H5-5.2-03]',content:'Lịch sinh hoạt, chế độ sinh hoạt của trẻ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'',note:''}
+      ]},
+      {code:'5.3', desc:'Kết quả nuôi dưỡng và chăm sóc sức khỏe', evidences:[
+        {tt:'1',code:'[H5-5.3-01]',content:'Hồ sơ y tế học đường, sức khỏe trẻ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'5.2',note:''},
+        {tt:'2',code:'[H5-5.3-02]',content:'Biểu đồ tăng trưởng của trẻ, theo dõi cân đo',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'5.2',note:''},
+        {tt:'3',code:'[H5-5.3-03]',content:'Báo cáo kết quả khám sức khỏe định kỳ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'5.2',note:''}
+      ]},
+      {code:'5.4', desc:'Kết quả giáo dục', evidences:[
+        {tt:'1',code:'[H5-5.4-01]',content:'Kết quả đánh giá sự phát triển của trẻ theo Chương trình GDMN',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'5.1',note:''},
+        {tt:'2',code:'[H5-5.4-02]',content:'Báo cáo kết quả nuôi dưỡng, CSGD trẻ cuối năm',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.1.6',note:''},
+        {tt:'3',code:'[H5-5.4-03]',content:'Hồ sơ chuẩn bị cho trẻ 5 tuổi vào lớp 1',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.4',note:''}
+      ]}
     ]}
   ];
 
@@ -1771,7 +1874,9 @@
         desc: seedTC.desc,  // luôn dùng desc từ seed (đúng chuẩn TT 22/2024)
         criteria: seedTC.criteria.map((seedCH, idx) => {
           const matchedCH = gasCriteria.find(g => (g.code||'').trim() === seedCH.code) || {};
-          let evidences = Array.isArray(matchedCH.evidences) ? matchedCH.evidences.slice() : [];
+          const gasEv = Array.isArray(matchedCH.evidences) ? matchedCH.evidences : [];
+          // Nếu GAS có evidences → dùng GAS (user custom); không thì fallback về seed evidences (TT 22/2024)
+          let evidences = gasEv.length > 0 ? gasEv.slice() : (Array.isArray(seedCH.evidences) ? seedCH.evidences.slice() : []);
           // Tiêu chí cuối cùng của tiêu chuẩn → nhận thêm các MC mồ côi
           if (idx === seedTC.criteria.length - 1 && orphanEvidences.length) {
             evidences = evidences.concat(orphanEvidences);
@@ -2484,13 +2589,7 @@
   }
   // Nạp lại sheet MinhChung từ DATA_MINHCHUNG trong GAS (ghi đè hoàn toàn)
   function admMCResetFromSeed(){
-    if(!confirm('⚡ Nạp lại 81 MC từ DATA_MINHCHUNG (TT 22/2024) trong GAS?
-
-✅ Ghi đè TOÀN BỘ sheet MinhChung bằng khung chuẩn 5 TC / 22 TCh / 81 MC.
-✅ Các sheet khác (DSGV, DS HS, Danh muc HSS, CauHinh, Hinh Anh) KHÔNG bị đụng.
-⚠️ Mọi chỉnh sửa thủ công trên sheet MinhChung hiện có sẽ bị MẤT.
-
-Bạn chắc chắn muốn tiếp tục?')) return;
+    if(!confirm('⚡ Nạp lại 81 MC từ DATA_MINHCHUNG (TT 22/2024) trong GAS?\n\n✅ Ghi đè TOÀN BỘ sheet MinhChung bằng khung chuẩn 5 TC / 22 TCh / 81 MC.\n✅ Các sheet khác (DSGV, DS HS, Danh muc HSS, CauHinh, Hinh Anh) KHÔNG bị đụng.\n⚠️ Mọi chỉnh sửa thủ công trên sheet MinhChung hiện có sẽ bị MẤT.\n\nBạn chắc chắn muốn tiếp tục?')) return;
     const msg = document.getElementById('admMCMsg');
     msg.textContent = '⏳ Đang nạp lại khung MC chuẩn TT 22/2024 lên Google Sheet...';
     msg.className = 'adm-alert warn';
