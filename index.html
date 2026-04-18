@@ -603,8 +603,8 @@
     <li><a href="#home">Trang chủ</a></li>
     <li><a href="#about">Giới thiệu</a></li>
     <li><a href="#records">Hồ sơ số</a></li>
-    <li><a href="#classes">Quản lý trẻ</a></li>
     <li><a href="#teachers">Hồ sơ CBGVNV</a></li>
+    <li><a href="#classes">Quản lý trẻ</a></li>
     <li><a href="#guide">Hướng dẫn</a></li>
   </ul>
   <button class="nav-cta" onclick="openAdmin()">⚙ Admin</button>
@@ -616,8 +616,8 @@
   <a href="#home" onclick="toggleMenu()">Trang chủ</a>
   <a href="#about" onclick="toggleMenu()">Giới thiệu</a>
   <a href="#records" onclick="toggleMenu()">Hồ sơ số</a>
-  <a href="#classes" onclick="toggleMenu()">Quản lý trẻ</a>
   <a href="#teachers" onclick="toggleMenu()">Hồ sơ CBGVNV</a>
+  <a href="#classes" onclick="toggleMenu()">Quản lý trẻ</a>
     <a href="#minhchung" onclick="toggleMenu()">Minh chứng KĐCL</a>
   <a href="#guide" onclick="toggleMenu()">Hướng dẫn</a>
   <a href="#contact" onclick="toggleMenu()">Liên hệ</a>
@@ -726,7 +726,6 @@
       <div class="rec-citation-body">
         <p class="rec-citation-lead">Bảng mã hóa minh chứng được xây dựng căn cứ:</p>
         <ol class="rec-citation-list">
-          <li><b>Văn bản hợp nhất số 13/VBHN-BGDĐT</b> ngày 25/01/2025 — <i>Hợp nhất Thông tư ban hành Quy định về kiểm định chất lượng giáo dục và công nhận đạt chuẩn quốc gia đối với trường mầm non</i> (hợp nhất TT 19/2018 và TT 22/2024, có hiệu lực từ 25/01/2025).</li>
           <li><b>Thông tư số 19/2018/TT-BGDĐT</b> ngày 22/8/2018 — <i>Quy định về kiểm định chất lượng giáo dục và công nhận đạt chuẩn quốc gia đối với trường mầm non</i>.</li>
           <li><b>Thông tư số 22/2024/TT-BGDĐT</b> ngày 10/12/2024 — Sửa đổi, bổ sung TT 17/2018, 18/2018, 19/2018; <i>cho phép dùng minh chứng dạng văn bản điện tử</i> (hiệu lực từ 25/01/2025).</li>
           <li><b>Công văn số 5942/BGDĐT-QLCL</b> ngày 28/12/2018 — <i>Hướng dẫn tự đánh giá và đánh giá ngoài trường mầm non</i> (quy trình thu thập, mã hóa minh chứng).</li>
@@ -740,6 +739,16 @@
   <div class="mc-wrap" id="mcWrap">
     <p style="text-align:center;color:#8a9690;padding:30px">Đang tải dữ liệu minh chứng...</p>
   </div>
+</section>
+
+<section class="teachers" id="teachers">
+  <div class="teachers-head">
+    <span class="kicker">Hồ sơ CBGVNV</span>
+    <h2>Hồ sơ CBGV – NV</h2>
+    <p>Đội ngũ cán bộ, giáo viên, nhân viên tận tâm của nhà trường. Click vào mỗi thẻ để mở hồ sơ cá nhân.</p>
+  </div>
+  <div class="role-filter" id="roleFilter"></div>
+  <div class="teacher-grid" id="teacherGrid"></div>
 </section>
 
 <section class="classes" id="classes">
@@ -763,15 +772,6 @@
   </div>
 </section>
 
-<section class="teachers" id="teachers">
-  <div class="teachers-head">
-    <span class="kicker">Hồ sơ CBGVNV</span>
-    <h2>Hồ sơ CBGV – NV</h2>
-    <p>Đội ngũ cán bộ, giáo viên, nhân viên tận tâm của nhà trường. Click vào mỗi thẻ để mở hồ sơ cá nhân.</p>
-  </div>
-  <div class="role-filter" id="roleFilter"></div>
-  <div class="teacher-grid" id="teacherGrid"></div>
-</section>
 
 <section class="guide" id="guide">
   <div class="guide-wrap">
@@ -837,23 +837,134 @@
           </div>
         </div>
 
-        <!-- Bước 3: Mở & tải lên Drive -->
-        <div class="step-card">
-          <div class="step-illust" style="background:linear-gradient(135deg,#e8f0ff,#dae7ff)">
+        <!-- Bước 3: ⭐ Tải hồ sơ lên Google Drive — chi tiết 3 cách -->
+        <div class="step-card full">
+          <div class="step-illust" style="background:linear-gradient(135deg,#e8f0ff,#dae7ff);min-height:280px">
             <span class="step-num">3</span>
-            <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
-              <text x="160" y="14" font-size="9" fill="#3858a8" text-anchor="middle" font-family="sans-serif" font-weight="bold">MỞ HỒ SƠ & TẢI TỆP LÊN DRIVE</text>
-              <rect x="30" y="24" width="260" height="26" rx="6" fill="#fff" stroke="#d8e0dc"/><circle cx="46" cy="37" r="5" fill="#3fb28c"/><text x="60" y="40" font-size="7" fill="#6b7a72" font-family="sans-serif">1.2.1.1</text><text x="102" y="40" font-size="8" fill="#3a4a42" font-family="sans-serif">QĐ thành lập HĐ TĐ-KT</text><rect x="240" y="30" width="40" height="14" rx="7" fill="#3fb28c"/><text x="260" y="40" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">Mở</text>
-              <text x="160" y="68" font-size="14" text-anchor="middle">⬇️</text>
-              <rect x="50" y="78" width="220" height="60" rx="10" fill="#fff" stroke="#4285f4"/><rect x="50" y="78" width="220" height="20" rx="10" fill="#4285f4"/><text x="160" y="92" font-size="9" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">📁 Google Drive</text>
-              <rect x="70" y="106" width="80" height="22" rx="6" fill="#f0f4ff" stroke="#4285f4"/><text x="110" y="120" font-size="7" fill="#4285f4" text-anchor="middle" font-family="sans-serif" font-weight="bold">+ Tải tệp lên</text>
-              <rect x="165" y="106" width="90" height="22" rx="6" fill="#f0f4ff" stroke="#4285f4"/><text x="210" y="120" font-size="7" fill="#4285f4" text-anchor="middle" font-family="sans-serif">📁 Tải thư mục</text>
+            <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+              <text x="300" y="14" font-size="11" fill="#1a56c2" text-anchor="middle" font-family="sans-serif" font-weight="bold">📂 TẢI HỒ SƠ LÊN GOOGLE DRIVE — QUAN TRỌNG NHẤT</text>
+
+              <!-- Phase 1: Click "Mở" -->
+              <text x="100" y="36" font-size="9" fill="#2d8a6e" text-anchor="middle" font-family="sans-serif" font-weight="bold">① Nhấn "Mở" trên hồ sơ</text>
+              <rect x="15" y="44" width="170" height="42" rx="8" fill="#fff" stroke="#d8e0dc"/>
+              <circle cx="28" cy="58" r="4" fill="#3fb28c"/>
+              <text x="37" y="61" font-size="6.5" fill="#6b7a72" font-family="sans-serif">1.1.1</text>
+              <text x="58" y="61" font-size="7.5" fill="#3a4a42" font-family="sans-serif">Chiến lược phát triển</text>
+              <rect x="140" y="52" width="34" height="14" rx="7" fill="#3fb28c"/>
+              <text x="157" y="62" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">Mở</text>
+              <text x="158" y="80" font-size="14">👆</text>
+
+              <!-- Arrow -->
+              <text x="200" y="68" font-size="22" fill="#4285f4">→</text>
+
+              <!-- Phase 2: Drive opens -->
+              <text x="380" y="36" font-size="9" fill="#2d8a6e" text-anchor="middle" font-family="sans-serif" font-weight="bold">② Thư mục Drive mở ra trong tab mới</text>
+              <rect x="225" y="44" width="310" height="56" rx="8" fill="#fff" stroke="#4285f4" stroke-width="1.5"/>
+              <rect x="225" y="44" width="310" height="16" rx="8" fill="#4285f4"/>
+              <text x="233" y="55" font-size="7" fill="#fff" font-family="sans-serif" font-weight="bold">📁 Google Drive › Trường MN › 1.1.1 Chiến lược</text>
+              <rect x="520" y="47" width="10" height="10" rx="2" fill="rgba(255,255,255,.25)"/>
+              <text x="380" y="76" font-size="8" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Lần đầu: đăng nhập Gmail trường (dùng chung)</text>
+              <text x="380" y="90" font-size="7" fill="#8a9690" text-anchor="middle" font-family="sans-serif" font-style="italic">Các lần sau không cần đăng nhập lại</text>
+
+              <!-- Phase 3: Three upload methods -->
+              <text x="300" y="120" font-size="10" fill="#1a56c2" text-anchor="middle" font-family="sans-serif" font-weight="bold">③ Tải tệp lên — chọn 1 trong 3 cách (đều có hiệu quả như nhau)</text>
+
+              <!-- Cách 1: Kéo thả -->
+              <g transform="translate(15, 134)">
+                <rect x="0" y="0" width="186" height="116" rx="10" fill="#fff" stroke="#4285f4" stroke-dasharray="5 3" stroke-width="1.2"/>
+                <rect x="0" y="0" width="186" height="20" rx="10" fill="#eaf5ef"/>
+                <text x="93" y="14" font-size="9" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">🎯 CÁCH 1 · Kéo thả (nhanh)</text>
+                <!-- Illustration: file dropped from Windows Explorer to Drive -->
+                <rect x="12" y="30" width="60" height="44" rx="5" fill="#f4f8f3" stroke="#d8e0dc"/>
+                <text x="42" y="42" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Windows Explorer</text>
+                <rect x="20" y="47" width="20" height="22" rx="2" fill="#4285f4"/>
+                <text x="30" y="60" font-size="9" text-anchor="middle">📄</text>
+                <text x="30" y="67" font-size="4" fill="#fff" text-anchor="middle" font-family="sans-serif">BC.pdf</text>
+                <!-- Arrow -->
+                <path d="M 78 55 Q 95 48 110 55" stroke="#e08a4a" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+                <defs>
+                  <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 z" fill="#e08a4a"/>
+                  </marker>
+                </defs>
+                <!-- Drive drop zone -->
+                <rect x="108" y="30" width="72" height="44" rx="5" fill="#f0f4ff" stroke="#4285f4" stroke-dasharray="3 2"/>
+                <text x="144" y="48" font-size="11" text-anchor="middle">⬇️</text>
+                <text x="144" y="62" font-size="5.5" fill="#4285f4" text-anchor="middle" font-family="sans-serif" font-weight="bold">Thả vào đây</text>
+                <!-- Steps -->
+                <text x="93" y="88" font-size="6.5" fill="#3a4a42" text-anchor="middle" font-family="sans-serif">Kéo từ File Explorer → thả vào</text>
+                <text x="93" y="98" font-size="6.5" fill="#3a4a42" text-anchor="middle" font-family="sans-serif">cửa sổ Drive → tự upload</text>
+                <rect x="25" y="104" width="136" height="10" rx="3" fill="#eaf5ef"/>
+                <text x="93" y="111" font-size="5.5" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">✓ Nhanh, 1 thao tác</text>
+              </g>
+
+              <!-- Cách 2: Click + Mới -->
+              <g transform="translate(207, 134)">
+                <rect x="0" y="0" width="186" height="116" rx="10" fill="#fff" stroke="#4285f4" stroke-width="1.2"/>
+                <rect x="0" y="0" width="186" height="20" rx="10" fill="#eaf5ef"/>
+                <text x="93" y="14" font-size="9" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">🎯 CÁCH 2 · Nhấn "+ Mới"</text>
+                <!-- Mini Drive UI -->
+                <rect x="12" y="28" width="45" height="58" rx="4" fill="#f7f9fc" stroke="#e0e6e2"/>
+                <rect x="17" y="33" width="36" height="16" rx="8" fill="#4285f4"/>
+                <text x="35" y="43" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">+ Mới ▾</text>
+                <!-- Dropdown -->
+                <text x="63" y="44" font-size="10" fill="#6b7a72">→</text>
+                <rect x="72" y="33" width="104" height="58" rx="4" fill="#fff" stroke="#4285f4"/>
+                <rect x="74" y="36" width="100" height="13" rx="2" fill="#f0f4ff"/>
+                <text x="82" y="45" font-size="6" fill="#4285f4" font-family="sans-serif" font-weight="bold">📄 Tải tệp lên</text>
+                <rect x="74" y="51" width="100" height="13" rx="2" fill="#fff"/>
+                <text x="82" y="60" font-size="6" fill="#6b7a72" font-family="sans-serif">📁 Tải thư mục lên</text>
+                <rect x="74" y="66" width="100" height="13" rx="2" fill="#fff"/>
+                <text x="82" y="75" font-size="6" fill="#6b7a72" font-family="sans-serif">📝 Google Docs</text>
+                <rect x="74" y="81" width="100" height="8" rx="2" fill="#fff"/>
+                <text x="82" y="87" font-size="5" fill="#8a9690" font-family="sans-serif">...</text>
+                <!-- Steps -->
+                <text x="93" y="98" font-size="6.5" fill="#3a4a42" text-anchor="middle" font-family="sans-serif">"+ Mới" góc trên trái → "Tải tệp lên"</text>
+                <rect x="25" y="104" width="136" height="10" rx="3" fill="#eaf5ef"/>
+                <text x="93" y="111" font-size="5.5" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">✓ Chuẩn nhất, có ở cả PC &amp; mobile</text>
+              </g>
+
+              <!-- Cách 3: Chuột phải -->
+              <g transform="translate(399, 134)">
+                <rect x="0" y="0" width="186" height="116" rx="10" fill="#fff" stroke="#4285f4" stroke-width="1.2"/>
+                <rect x="0" y="0" width="186" height="20" rx="10" fill="#eaf5ef"/>
+                <text x="93" y="14" font-size="9" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">🎯 CÁCH 3 · Chuột phải</text>
+                <!-- Empty area + context menu -->
+                <rect x="12" y="28" width="72" height="58" rx="4" fill="#fafbfc" stroke="#e0e6e2" stroke-dasharray="2 2"/>
+                <text x="48" y="52" font-size="11" text-anchor="middle">🖱️</text>
+                <text x="48" y="65" font-size="5.5" fill="#8a9690" text-anchor="middle" font-family="sans-serif">Vùng trống</text>
+                <text x="48" y="74" font-size="5.5" fill="#8a9690" text-anchor="middle" font-family="sans-serif">chuột phải</text>
+                <!-- Menu -->
+                <text x="91" y="48" font-size="9" fill="#e08a4a">→</text>
+                <rect x="100" y="32" width="76" height="58" rx="4" fill="#fff" stroke="#ccc"/>
+                <rect x="102" y="34" width="72" height="11" rx="2" fill="#f0f4ff"/>
+                <text x="106" y="42" font-size="5.5" fill="#4285f4" font-family="sans-serif" font-weight="bold">📄 Tải tệp lên</text>
+                <rect x="102" y="46" width="72" height="11" rx="2" fill="#fff"/>
+                <text x="106" y="54" font-size="5.5" fill="#6b7a72" font-family="sans-serif">📁 Tải thư mục</text>
+                <rect x="102" y="58" width="72" height="11" rx="2" fill="#fff"/>
+                <text x="106" y="66" font-size="5.5" fill="#6b7a72" font-family="sans-serif">📝 Tài liệu mới</text>
+                <rect x="102" y="70" width="72" height="11" rx="2" fill="#fff"/>
+                <text x="106" y="78" font-size="5.5" fill="#6b7a72" font-family="sans-serif">📁 Thư mục mới</text>
+                <rect x="102" y="82" width="72" height="6" rx="2" fill="#fff"/>
+                <text x="106" y="87" font-size="4.5" fill="#8a9690" font-family="sans-serif">...</text>
+                <!-- Steps -->
+                <text x="93" y="98" font-size="6.5" fill="#3a4a42" text-anchor="middle" font-family="sans-serif">Chuột phải vùng trống → "Tải tệp lên"</text>
+                <rect x="25" y="104" width="136" height="10" rx="3" fill="#eaf5ef"/>
+                <text x="93" y="111" font-size="5.5" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">✓ Tiện nếu dùng chuột</text>
+              </g>
             </svg>
           </div>
           <div class="step-body">
-            <h4>Mở hồ sơ & tải tệp lên Drive</h4>
-            <p>Nhấn nút <b>"Mở"</b> (xanh) cạnh hồ sơ → Google Drive mở tab mới → Nhấn <b>"+ Tải tệp lên"</b> hoặc kéo thả file vào → Tệp tự lưu trên Drive. Hồ sơ đã có trên hệ thống!</p>
-            <div class="step-tip">💡 Nút "Mở" chỉ hiện khi hồ sơ đã được Admin dán link Drive tương ứng.</div>
+            <h4>📂 Tải hồ sơ lên Google Drive — thao tác quan trọng nhất</h4>
+            <p>Đây là cách đưa hồ sơ lên hệ thống. Sau khi nhấn <b>"Mở"</b>, thư mục Drive tương ứng sẽ mở trong tab mới. Từ đó có <b>3 cách</b> tải tệp lên (đều cho kết quả như nhau):</p>
+            <ol style="margin:10px 0 10px 20px;padding:0;font-size:.88rem;color:#3a4a42;line-height:1.75">
+              <li>🎯 <b>Kéo thả</b> (nhanh nhất, khuyên dùng): Mở <i>File Explorer</i> trên máy → chọn file → <b>kéo thả</b> thẳng vào cửa sổ Drive → tự động upload.</li>
+              <li>🎯 <b>Nhấn "+ Mới"</b> (chuẩn nhất, dùng được cả mobile): Góc trên bên trái Drive có nút <span style="background:#4285f4;color:#fff;padding:2px 10px;border-radius:10px;font-size:.78rem;font-weight:600">+ Mới ▾</span> → chọn <b>"📄 Tải tệp lên"</b> (cho 1 hoặc nhiều file) hoặc <b>"📁 Tải thư mục lên"</b> (cho cả thư mục có cây con).</li>
+              <li>🎯 <b>Chuột phải</b> vào vùng trống của Drive → menu hiện ra → chọn <b>"Tải tệp lên"</b> (chỉ có trên máy tính).</li>
+            </ol>
+            <div class="step-tip">💡 <b>Kết quả</b>: Thanh tiến trình hiện góc dưới phải → chạy đến 100% → ✅ tệp đã lên Drive. Đóng tab Drive, quay lại trang web bấm <b>Admin → Làm mới</b> (nếu cần). Chấm xanh <b style="color:#3fb28c">●</b> sẽ báo hồ sơ đã có link.</div>
+            <div class="step-tip">🔐 <b>Lần đầu mở Drive</b>: trình duyệt yêu cầu <b>đăng nhập tài khoản Google/Gmail</b> của trường (do Admin cấp). Các lần sau không cần đăng nhập lại.</div>
+            <div class="step-tip">📱 <b>Trên điện thoại</b>: ứng dụng Drive sẽ tự mở. Nhấn <b>+</b> (góc phải dưới) → <b>"Tải lên"</b> → chọn file từ thư viện điện thoại.</div>
           </div>
         </div>
 
@@ -865,7 +976,7 @@
               <text x="300" y="14" font-size="10" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">⭐ BẢNG MÃ HÓA MINH CHỨNG KĐCL (theo TT 19/2018 sửa đổi TT 22/2024)</text>
               <!-- Stats -->
               <rect x="40" y="24" width="70" height="30" rx="6" fill="#fff" stroke="#d8e0dc"/><text x="75" y="38" font-size="11" fill="#2d8a6e" text-anchor="middle" font-family="serif" font-weight="bold">5</text><text x="75" y="50" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">TIÊU CHUẨN</text>
-              <rect x="115" y="24" width="70" height="30" rx="6" fill="#fff" stroke="#d8e0dc"/><text x="150" y="38" font-size="11" fill="#2d8a6e" text-anchor="middle" font-family="serif" font-weight="bold">22</text><text x="150" y="50" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">TIÊU CHÍ</text>
+              <rect x="115" y="24" width="70" height="30" rx="6" fill="#fff" stroke="#d8e0dc"/><text x="150" y="38" font-size="11" fill="#2d8a6e" text-anchor="middle" font-family="serif" font-weight="bold">25</text><text x="150" y="50" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">TIÊU CHÍ</text>
               <rect x="190" y="24" width="70" height="30" rx="6" fill="#fff" stroke="#d8e0dc"/><text x="225" y="38" font-size="11" fill="#2d8a6e" text-anchor="middle" font-family="serif" font-weight="bold">81</text><text x="225" y="50" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">MINH CHỨNG</text>
               <!-- Buttons -->
               <rect x="280" y="28" width="110" height="22" rx="11" fill="#fff" stroke="#3fb28c" stroke-width="1.5"/><text x="335" y="42" font-size="8" fill="#1e6b54" text-anchor="middle" font-family="sans-serif" font-weight="bold">📜 Căn cứ pháp lý</text>
@@ -882,12 +993,40 @@
             <p>Cuộn đến <b>"Bảng mã hóa minh chứng"</b> → Theo <b>TT 19/2018 sửa đổi bởi TT 22/2024</b> gồm <b>5 tiêu chuẩn · 22 tiêu chí · 81 minh chứng</b> (TT 22/2024 đã gộp TC3 còn 3 tiêu chí). Nhấn vào mỗi Tiêu chuẩn để xổ xuống các tiêu chí và minh chứng con. Mỗi MC có mã dạng <code>[H1-1.1-01]</code> kèm <b>mã HSS liên quan</b> để mở thẳng thư mục Drive tương ứng.</p>
             <div class="step-tip">🖨 <b>Nút "In theo mẫu"</b> (viền cam) sinh bản in <b>A4 ngang</b> chuẩn Phụ lục CV 5942/BGDĐT-QLCL — có quốc hiệu, tiêu đề, bảng 7 cột (STT, Mã MC, Tên MC, Ngày BH, Nơi BH, Mã HSS, Ghi chú), phần ký Hiệu trưởng. Tự điền tên trường, địa chỉ, năm học hiện tại.</div>
           </div>
+        </div><!-- Bước 5: Hồ sơ CBGVNV -->
+        <div class="step-card">
+          <div class="step-illust" style="background:linear-gradient(135deg,#f0f4ff,#dae7ff)">
+            <span class="step-num">5</span>
+            <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
+              <text x="160" y="14" font-size="9" fill="#3858a8" text-anchor="middle" font-family="sans-serif" font-weight="bold">MỤC "HỒ SƠ CBGVNV"</text>
+              <rect x="15" y="22" width="60" height="16" rx="8" fill="#1e6b54"/><text x="45" y="33" font-size="6" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">Tất cả (25)</text>
+              <rect x="80" y="22" width="70" height="16" rx="8" fill="#fff" stroke="#d8e0dc"/><text x="115" y="33" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Ban giám hiệu</text>
+              <rect x="155" y="22" width="60" height="16" rx="8" fill="#fff" stroke="#d8e0dc"/><text x="185" y="33" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Giáo viên</text>
+              <rect x="220" y="22" width="55" height="16" rx="8" fill="#fff" stroke="#d8e0dc"/><text x="247" y="33" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Nhân viên</text>
+              <rect x="30" y="46" width="120" height="95" rx="12" fill="#fff" stroke="#d8e0dc"/><rect x="30" y="46" width="120" height="30" rx="12" fill="#3fb28c"/>
+              <circle cx="90" cy="78" r="15" fill="#fff" stroke="#d8e0dc" stroke-width="2"/><text x="90" y="82" font-size="9" text-anchor="middle" fill="#2d8a6e" font-family="serif" font-weight="bold">NA</text>
+              <text x="90" y="104" font-size="8" text-anchor="middle" fill="#142a23" font-family="serif" font-weight="bold">Nguyễn Thị A</text>
+              <text x="90" y="114" font-size="6" text-anchor="middle" fill="#6b7a72" font-family="sans-serif">Hiệu trưởng</text>
+              <rect x="50" y="120" width="80" height="14" rx="7" fill="#3fb28c"/><text x="90" y="130" font-size="6" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">📂 Hồ sơ cá nhân</text>
+              <text x="180" y="82" font-size="20">👆</text>
+              <text x="250" y="60" font-size="9" fill="#3858a8" text-anchor="middle" font-family="sans-serif" font-weight="bold">Mở Drive</text>
+              <text x="250" y="74" font-size="9" fill="#3858a8" text-anchor="middle" font-family="sans-serif" font-weight="bold">cá nhân</text>
+              <text x="250" y="95" font-size="20" text-anchor="middle">⬇️</text>
+              <rect x="200" y="105" width="100" height="28" rx="8" fill="#fff" stroke="#4285f4"/><rect x="200" y="105" width="100" height="14" rx="8" fill="#4285f4"/><text x="250" y="115" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">📁 Google Drive</text><text x="250" y="128" font-size="6" fill="#4285f4" text-anchor="middle" font-family="sans-serif" font-weight="bold">+ Tải hồ sơ GV lên</text>
+            </svg>
+          </div>
+          <div class="step-body">
+            <h4>Hồ sơ CB, GV, NV</h4>
+            <p>Cuộn đến <b>"Hồ sơ CBGVNV"</b> → Lọc theo <b>Ban giám hiệu / Giáo viên / Nhân viên</b> → Nhấn <b>"📂 Hồ sơ cá nhân"</b> → Drive mở ra → <b>"+ Tải tệp lên"</b> để đưa hồ sơ.</p>
+          </div>
         </div>
 
-        <!-- Bước 5: Quản lý trẻ -->
+        
+
+        <!-- Bước 6: Quản lý trẻ -->
         <div class="step-card">
           <div class="step-illust" style="background:linear-gradient(135deg,#1e6b54,#165844)">
-            <span class="step-num" style="background:var(--accent);color:var(--g-deep)">5</span>
+            <span class="step-num" style="background:var(--accent);color:var(--g-deep)">6</span>
             <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
               <text x="160" y="14" font-size="9" fill="rgba(255,255,255,.9)" text-anchor="middle" font-family="sans-serif" font-weight="bold">MỤC "QUẢN LÝ TRẺ" — LỌC THEO ĐỘ TUỔI</text>
               <rect x="20" y="24" width="50" height="20" rx="10" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.25)"/><text x="45" y="37" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle" font-family="sans-serif">Tất cả</text>
@@ -913,34 +1052,6 @@
           <div class="step-body">
             <h4>Quản lý trẻ — Lọc theo độ tuổi</h4>
             <p>Cuộn đến <b>"Quản lý trẻ"</b> → Chọn tab độ tuổi (🍼 Nhà trẻ · 🎈 3 tuổi · 🎨 4 tuổi · 🎓 5 tuổi) → Nhấn thẻ lớp → Bảng gồm: họ tên, ngày sinh, giới tính, nơi sinh, SĐT PH. <b>Click từng bé</b> để xem thêm: họ tên cha/mẹ, năm sinh cha/mẹ, địa chỉ, dân tộc, tôn giáo.</p>
-          </div>
-        </div>
-
-        <!-- Bước 6: Hồ sơ CBGVNV -->
-        <div class="step-card">
-          <div class="step-illust" style="background:linear-gradient(135deg,#f0f4ff,#dae7ff)">
-            <span class="step-num">6</span>
-            <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
-              <text x="160" y="14" font-size="9" fill="#3858a8" text-anchor="middle" font-family="sans-serif" font-weight="bold">MỤC "HỒ SƠ CBGVNV"</text>
-              <rect x="15" y="22" width="60" height="16" rx="8" fill="#1e6b54"/><text x="45" y="33" font-size="6" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">Tất cả (25)</text>
-              <rect x="80" y="22" width="70" height="16" rx="8" fill="#fff" stroke="#d8e0dc"/><text x="115" y="33" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Ban giám hiệu</text>
-              <rect x="155" y="22" width="60" height="16" rx="8" fill="#fff" stroke="#d8e0dc"/><text x="185" y="33" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Giáo viên</text>
-              <rect x="220" y="22" width="55" height="16" rx="8" fill="#fff" stroke="#d8e0dc"/><text x="247" y="33" font-size="6" fill="#6b7a72" text-anchor="middle" font-family="sans-serif">Nhân viên</text>
-              <rect x="30" y="46" width="120" height="95" rx="12" fill="#fff" stroke="#d8e0dc"/><rect x="30" y="46" width="120" height="30" rx="12" fill="#3fb28c"/>
-              <circle cx="90" cy="78" r="15" fill="#fff" stroke="#d8e0dc" stroke-width="2"/><text x="90" y="82" font-size="9" text-anchor="middle" fill="#2d8a6e" font-family="serif" font-weight="bold">NA</text>
-              <text x="90" y="104" font-size="8" text-anchor="middle" fill="#142a23" font-family="serif" font-weight="bold">Nguyễn Thị A</text>
-              <text x="90" y="114" font-size="6" text-anchor="middle" fill="#6b7a72" font-family="sans-serif">Hiệu trưởng</text>
-              <rect x="50" y="120" width="80" height="14" rx="7" fill="#3fb28c"/><text x="90" y="130" font-size="6" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">📂 Hồ sơ cá nhân</text>
-              <text x="180" y="82" font-size="20">👆</text>
-              <text x="250" y="60" font-size="9" fill="#3858a8" text-anchor="middle" font-family="sans-serif" font-weight="bold">Mở Drive</text>
-              <text x="250" y="74" font-size="9" fill="#3858a8" text-anchor="middle" font-family="sans-serif" font-weight="bold">cá nhân</text>
-              <text x="250" y="95" font-size="20" text-anchor="middle">⬇️</text>
-              <rect x="200" y="105" width="100" height="28" rx="8" fill="#fff" stroke="#4285f4"/><rect x="200" y="105" width="100" height="14" rx="8" fill="#4285f4"/><text x="250" y="115" font-size="7" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">📁 Google Drive</text><text x="250" y="128" font-size="6" fill="#4285f4" text-anchor="middle" font-family="sans-serif" font-weight="bold">+ Tải hồ sơ GV lên</text>
-            </svg>
-          </div>
-          <div class="step-body">
-            <h4>Hồ sơ CB, GV, NV</h4>
-            <p>Cuộn đến <b>"Hồ sơ CBGVNV"</b> → Lọc theo <b>Ban giám hiệu / Giáo viên / Nhân viên</b> → Nhấn <b>"📂 Hồ sơ cá nhân"</b> → Drive mở ra → <b>"+ Tải tệp lên"</b> để đưa hồ sơ.</p>
           </div>
         </div>
 
@@ -972,13 +1083,14 @@
             <h4>⭐ Admin Panel — Bảng điều khiển 5 tab</h4>
             <p>Nhấn nút <b>⚙ Admin</b> góc trên phải → Nhập mật khẩu (mặc định <code>admin123</code>) → Hiện 5 tab:</p>
             <ul style="margin:8px 0 10px 20px;padding:0;font-size:.86rem;color:#5a6b64;line-height:1.7">
-              <li><b>🏫 Thông tin</b> — sửa tên trường, địa chỉ, SĐT, email, năm học, hiệu trưởng, chủ đề màu</li>
+              <li><b>🏫 Thông tin</b> — sửa tên trường, địa chỉ, SĐT, email, năm học, hiệu trưởng, chủ đề màu (nếu để trống, tên hiệu trưởng tự lấy từ DSGV)</li>
               <li><b>📋 Hồ sơ số</b> — sửa tên/link Drive từng hồ sơ, thêm hồ sơ mới, tìm nhanh</li>
-              <li><b>🎯 Minh chứng KĐCL</b> ⭐ — CRUD đầy đủ: sửa tên tiêu chí, thêm/xóa minh chứng, nút <b>"🔄 Khôi phục khung TT 22/2024/2018"</b></li>
-              <li><b>📤 Nhập dữ liệu</b> — tải Excel giáo viên & học sinh (có sẵn file mẫu)</li>
+              <li><b>🎯 Minh chứng KĐCL</b> ⭐ — CRUD đầy đủ: sửa tên tiêu chí, thêm/xóa minh chứng. Có 2 nút nhanh: <b>"🔄 Khôi phục khung TT 22/2024"</b> (giữ MC cũ) và <b>"⚡ Nạp lại 81 MC từ GAS"</b> (ghi đè toàn bộ sheet về chuẩn TT 22)</li>
+              <li><b>📤 Nhập dữ liệu</b> — tải Excel giáo viên &amp; học sinh (có sẵn file mẫu Excel)</li>
               <li><b>🔑 Mật khẩu</b> — đổi mật khẩu admin</li>
             </ul>
             <div class="step-tip">💾 Mọi thay đổi đều được <b>lưu lên Google Sheet tự động</b> khi bấm "Lưu thay đổi" — đồng bộ ngay cho các trình duyệt khác.</div>
+            <div class="step-tip">🖨 <b>Tên Hiệu trưởng trên bản in</b>: tự lấy từ DSGV (người có chức vụ "Hiệu trưởng"). Muốn ghi đè, vào tab 🏫 Thông tin nhập thủ công.</div>
           </div>
         </div>
 
@@ -1611,7 +1723,7 @@
     role = role || 'all';
     const list = role === 'all' ? TEACHERS : TEACHERS.filter(t => teacherType(t) === role);
     document.getElementById('teacherGrid').innerHTML = list.map(t => {
-      const extra = [t.degree, t.dob ? 'Sinh '+t.dob : ''].filter(Boolean).join(' · ');
+      const extra = t.dob ? 'Ngày sinh ' + t.dob : '';
       const btn = t.link
         ? `<a class="teacher-profile" href="${escapeHtml(t.link)}" target="_blank" rel="noopener">📂 Hồ sơ cá nhân</a>`
         : `<span class="teacher-profile disabled">📂 Chưa có</span>`;
@@ -1741,7 +1853,7 @@
         {tt:'3',code:'[H1-1.4-03]',content:'Kế hoạch, biên bản sinh hoạt tổ chuyên môn',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.4.2',note:''},
         {tt:'4',code:'[H1-1.4-04]',content:'Sổ theo dõi hoạt động tổ chuyên môn, tổ văn phòng',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.4.3',note:''}
       ]},
-      {code:'1.5', desc:'Tuyển sinh, tổ chức nhóm trẻ và lớp mẫu giáo', evidences:[
+      {code:'1.5', desc:'Tổ chức nhóm trẻ và lớp mẫu giáo', evidences:[
         {tt:'1',code:'[H1-1.5-01]',content:'Danh bạ trẻ, sổ theo dõi trẻ hàng ngày',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.1',note:''},
         {tt:'2',code:'[H1-1.5-02]',content:'Hồ sơ tuyển sinh, biên bản phân nhóm/lớp',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.2',note:''},
         {tt:'3',code:'[H1-1.5-03]',content:'Hồ sơ quản lý trẻ khuyết tật học hòa nhập',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.5.3',note:''},
@@ -1766,7 +1878,7 @@
       ]},
       {code:'1.9', desc:'Thực hiện quy chế dân chủ cơ sở', evidences:[
         {tt:'1',code:'[H1-1.9-01]',content:'Bộ quy chế dân chủ cơ sở',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.9.1',note:''},
-        {tt:'2',code:'[H1-1.9-02]',content:'Hồ sơ công khai theo Thông tư 09/2024/TT-BGDĐT',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.9.2',note:''},
+        {tt:'2',code:'[H1-1.9-02]',content:'Hồ sơ công khai theo Thông tư 36/2017',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.9.2',note:''},
         {tt:'3',code:'[H1-1.9-03]',content:'Báo cáo thực hiện QCDC cơ sở',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.9.3',note:''}
       ]},
       {code:'1.10', desc:'Đảm bảo an ninh trật tự, an toàn trường học', evidences:[
@@ -1806,7 +1918,7 @@
         {tt:'3',code:'[H3-3.2-03]',content:'Hồ sơ bếp ăn bán trú, giấy chứng nhận đủ điều kiện ATTP',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.6',note:''},
         {tt:'4',code:'[H3-3.2-04]',content:'Hợp đồng cung ứng thực phẩm, sổ kiểm thực 3 bước',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.1',note:''}
       ]},
-      {code:'3.3', desc:'Tỷ lệ các hạng mục công trình kiên cố, mật độ sử dụng đất đảm bảo tiêu chuẩn cơ sở vật chất mức độ 1 đối với trường mầm non theo quy định', evidences:[
+      {code:'3.3', desc:'Hạ tầng kỹ thuật, các hạng mục công trình kiên cố và thiết bị dạy học', evidences:[
         {tt:'1',code:'[H3-3.3-01]',content:'Hệ thống cấp nước sạch, kết quả xét nghiệm nước định kỳ',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.3.7',note:''},
         {tt:'2',code:'[H3-3.3-02]',content:'Hồ sơ PCCC, biên bản kiểm tra định kỳ hệ thống PCCC',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'1.10.1',note:''},
         {tt:'3',code:'[H3-3.3-03]',content:'Hạ tầng CNTT (hệ thống mạng, máy tính, camera)',issueDate:'',issuer:'Trường MN Diễn Xuân',hssRef:'',note:''},
