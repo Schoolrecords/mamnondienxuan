@@ -4931,6 +4931,13 @@ const fmtHssData = (hssData) => {
   }
   lines.push('  • Tổng trẻ: ' + (ss.total || 0) + ' trẻ');
   lines.push('  • Tổng nhóm/lớp: ' + classes.length);
+  // Phân bổ lớp theo độ tuổi (để AI điền trực tiếp vào bảng CSDL)
+  const classesByAge = { nha_tre: 0, mg3: 0, mg4: 0, mg5: 0 };
+  classes.forEach(c => { if (classesByAge[c.ageGroup] !== undefined) classesByAge[c.ageGroup]++; });
+  lines.push('  • Nhóm Nhà trẻ (dưới 36 tháng): ' + classesByAge.nha_tre + ' nhóm, ' + (ss.byAge?.nha_tre || 0) + ' trẻ');
+  lines.push('  • Lớp MG Bé (3-4 tuổi): ' + classesByAge.mg3 + ' lớp, ' + (ss.byAge?.mg3 || 0) + ' trẻ');
+  lines.push('  • Lớp MG Nhỡ (4-5 tuổi): ' + classesByAge.mg4 + ' lớp, ' + (ss.byAge?.mg4 || 0) + ' trẻ');
+  lines.push('  • Lớp MG Lớn (5-6 tuổi): ' + classesByAge.mg5 + ' lớp, ' + (ss.byAge?.mg5 || 0) + ' trẻ');
   if (classes.length > 0 && ss.total > 0) {
     const avgPerClass = (ss.total / classes.length).toFixed(1).replace('.', ',');
     lines.push('  • Bình quân: ' + avgPerClass + ' trẻ/nhóm-lớp');
@@ -5203,6 +5210,21 @@ Dùng định dạng bảng markdown với dấu | để hệ thống render ra 
 | Độ tuổi | 2021-2022 | 2022-2023 | 2023-2024 | 2024-2025 | 2025-2026 |
 |---|---|---|---|---|---|
 | Lớp mẫu giáo Lớn (5-6 tuổi) | [CẦN BỔ SUNG] | ... |
+
+🔴 QUY TẮC VỀ CỘT NĂM HỌC HIỆN TẠI (cột cuối):
+- Cột năm học HIỆN TẠI (năm cuối bảng) BẮT BUỘC DÙNG SỐ THẬT từ block "DỮ LIỆU TRƯỜNG TỪ HỒ SƠ SỐ" dưới đây. KHÔNG được ghi "[CẦN BỔ SUNG]" cho cột này nếu data đã có.
+- Cụ thể, mapping từ hssData sang các hàng bảng:
+  • Lớp mẫu giáo Bé (3-4 tuổi) → số trẻ = ss.byAge.mg3 ; số lớp = đếm classes có ageGroup='mg3'
+  • Lớp mẫu giáo Nhỡ (4-5 tuổi) → số trẻ = ss.byAge.mg4 ; số lớp = đếm classes có ageGroup='mg4'
+  • Lớp mẫu giáo Lớn (5-6 tuổi) → số trẻ = ss.byAge.mg5 ; số lớp = đếm classes có ageGroup='mg5'
+  • Nhóm nhà trẻ (tổng) → số trẻ = ss.byAge.nha_tre ; số nhóm = đếm classes có ageGroup='nha_tre'
+  • 3 hàng con nhà trẻ (3-12 / 13-24 / 25-36 tháng): dùng [CẦN BỔ SUNG] nếu không có chi tiết, HOẶC gộp vào 1 hàng "Nhóm nhà trẻ (dưới 36 tháng)"
+  • Hàng "Hiệu trưởng" → teacherStats.byRole['Hiệu trưởng']
+  • Hàng "Phó hiệu trưởng" → teacherStats.byRole['Phó hiệu trưởng']
+  • Hàng "Giáo viên mầm non" → teacherStats.byRole['Giáo viên'] (tất cả biến thể chứa 'giáo viên')
+  • Hàng "Tổng CBQL+GV+NV" → teacherStats.total
+  • Hàng "Tỷ lệ GV đạt chuẩn trình độ" → 100% (giả định đạt chuẩn Luật GD 2019)
+- 4 CỘT NĂM CŨ (${curTo-4}-${curTo-3}, ${curTo-3}-${curTo-2}, ${curTo-2}-${curTo-1}, ${curTo-1}-${curTo}) dùng [CẦN BỔ SUNG] vì không có dữ liệu lịch sử.
 
 Độ dài 800-1200 từ. Văn phong hành chính, liệt kê rõ ràng. Ưu tiên phản ánh đặc thù mầm non: nuôi dưỡng bán trú, an toàn thực phẩm, đội ngũ bếp/cấp dưỡng.${hssDataBlock}${oldRep}`;
   }
