@@ -295,9 +295,10 @@
   .st-table{width:100%;border-collapse:separate;border-spacing:0}
   .st-table thead th{background:#f4f8f3;color:var(--g-deep);font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;text-align:left;padding:12px 14px;border-bottom:1px solid #e0e6e2}
   .st-table tbody td{padding:11px 14px;border-bottom:1px solid #f3f6f4;font-size:.86rem;vertical-align:middle}
-  .st-table tbody tr.main{cursor:pointer}
-  .st-table tbody tr.main:hover{background:#f7fbf8}
-  .st-table tbody tr.main.open{background:#f0f7f2}
+  /* tr.st-row — KHÔNG dùng tên "main" vì conflict với .main của KĐCL layout (display:grid, height:100vh) */
+  .st-table tbody tr.st-row{cursor:pointer}
+  .st-table tbody tr.st-row:hover{background:#f7fbf8}
+  .st-table tbody tr.st-row.open{background:#f0f7f2}
   .st-idx{color:#8a9690;font-size:.8rem;width:36px}
   .st-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g2));color:white;display:inline-grid;place-items:center;font-family:'Fraunces',serif;font-size:.76rem;font-weight:600;margin-right:10px;vertical-align:middle}
   .st-avatar.female{background:linear-gradient(135deg,#ff9b7a,#ff7a52)}
@@ -416,12 +417,13 @@
     .st-table thead{display:none}
     .st-table,.st-table tbody{display:block;width:100%}
     .st-table tbody tr{display:block;border:1px solid #eef2ef;border-radius:12px;padding:10px 14px;margin-bottom:8px}
-    .st-table tbody tr.main.open{background:#f0f7f2}
+    .st-table tbody tr.st-row.open{background:#f0f7f2}
     .st-table tbody td{display:flex;justify-content:space-between;align-items:center;border:none;padding:5px 0;font-size:.82rem;gap:10px}
     .st-table tbody td[data-lbl]::before{content:attr(data-lbl);font-weight:600;color:#8a9690;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
     .st-table tbody td.st-name-cell{border-bottom:1px solid #eef2ef;padding-bottom:8px;margin-bottom:4px;justify-content:flex-start}
     .st-detail-inner{grid-template-columns:1fr;padding:14px;gap:10px}
-    .st-detail-row{display:block!important}
+    /* KHÔNG ép .st-detail-row{display:block!important} — sẽ ghi đè style="display:none" inline,
+       làm detail row luôn hiện. Rule .st-table tbody tr{display:block} ở trên đã đủ cho khi mở. */
     .st-detail-row td{display:block!important;padding:0!important}
     .teacher-grid{grid-template-columns:repeat(2,1fr);gap:14px}
     .teacher-card{padding:22px 14px}
@@ -2777,7 +2779,7 @@
         const isFemale = /nữ|nu/i.test(s.gender);
         const init = initials(s.name);
         const rowId = 'st' + i;
-        return `<tr class="main" id="${rowId}" onclick="toggleStudent('${rowId}', ${i})">
+        return `<tr class="st-row" id="${rowId}" onclick="toggleStudent('${rowId}', ${i})">
           <td class="st-idx" data-lbl="STT">${i+1}</td>
           <td class="st-name-cell" data-lbl="Trẻ">
             <span class="st-avatar ${isFemale?'female':''}">${init}</span>
