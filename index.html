@@ -5,28 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#2d8a6e">
-<!-- ========== ĐỔI TÊN TRƯỜNG Ở ĐÂY KHI TẠO CHO TRƯỜNG MỚI ========== -->
-<title>Hồ sơ số - Trường Mầm non [Tên trường]</title>
-<meta name="description" content="Hồ sơ số chính thức Trường Mầm non [Tên trường], [Xã/Phường], [Tỉnh/Thành phố]. Hệ thống quản lý hồ sơ số, danh sách CBGV và học sinh.">
+<!-- ============================================================
+     META TAGS — BRAND CHUNG cho mọi trường mầm non
+     Bot Zalo/Facebook/Messenger scrape HTML tĩnh để hiện link preview.
+     Đã hardcode "Hồ sơ Trường Mầm non · Giải pháp Công nghệ số" — KHÔNG cần sửa.
+     Người triển khai chỉ cần dán URL Apps Script (1 chỗ duy nhất bên dưới).
+============================================================ -->
+<title>Hồ sơ Trường Mầm non · Giải pháp Công nghệ số</title>
+<meta name="description" content="Hồ sơ Trường Mầm non · Giải pháp Công nghệ số — Hệ thống quản lý hồ sơ số toàn diện cho trường mầm non Việt Nam: danh mục hồ sơ, đội ngũ CBGV, danh sách trẻ, minh chứng KĐCL và báo cáo tự đánh giá.">
 <!-- Open Graph (Zalo, Facebook, Messenger link preview) -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://username.github.io/tenrepo/">
-<meta property="og:site_name" content="Trường Mầm non [Tên trường]">
+<meta property="og:site_name" content="Hồ sơ Trường Mầm non">
 <meta property="og:locale" content="vi_VN">
-<meta property="og:title" content="Hồ sơ số - Trường Mầm non [Tên trường]">
-<meta property="og:description" content="Hồ sơ số chính thức Trường Mầm non [Tên trường], [Xã/Phường], [Tỉnh/Thành phố]. Hệ thống quản lý hồ sơ số, danh sách CBGV và học sinh.">
-<meta property="og:image" content="https://username.github.io/tenrepo/og-banner.jpg">
-<meta property="og:image:secure_url" content="https://username.github.io/tenrepo/og-banner.jpg">
+<meta property="og:title" content="Hồ sơ Trường Mầm non">
+<meta property="og:description" content="Giải pháp Công nghệ số — Hệ thống quản lý hồ sơ số toàn diện cho trường mầm non Việt Nam.">
+<meta property="og:image" content="og-banner.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Hồ sơ số - Trường Mầm non [Tên trường]">
+<meta property="og:image:alt" content="Hồ sơ Trường Mầm non - Giải pháp Công nghệ số">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hồ sơ số - Trường Mầm non [Tên trường]">
-<meta name="twitter:description" content="Hồ sơ số chính thức Trường Mầm non [Tên trường], [Xã/Phường], [Tỉnh/Thành phố].">
-<meta name="twitter:image" content="https://username.github.io/tenrepo/og-banner.jpg">
-<!-- ========== HẾT PHẦN CẦN ĐỔI ========== -->
+<meta name="twitter:title" content="Hồ sơ Trường Mầm non">
+<meta name="twitter:description" content="Giải pháp Công nghệ số — Hệ thống quản lý hồ sơ số toàn diện cho trường mầm non.">
+<meta name="twitter:image" content="og-banner.jpg">
+<!-- ============================================================ -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%238dd3a8'/%3E%3Cstop offset='100%25' stop-color='%233fb28c'/%3E%3C/linearGradient%3E%3ClinearGradient id='l1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23a8e650'/%3E%3Cstop offset='100%25' stop-color='%235dba2f'/%3E%3C/linearGradient%3E%3ClinearGradient id='l2' x1='1' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%238edc40'/%3E%3Cstop offset='100%25' stop-color='%234aab20'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='28' r='20' fill='%23fdfbf4'/%3E%3Cellipse cx='32' cy='38' rx='10' ry='6' fill='%238B6B52'/%3E%3Cellipse cx='32' cy='37' rx='9' ry='5' fill='%239B7B62'/%3E%3Cpath d='M32 36C32 36 31 24 32 18' stroke='%236BBF3B' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M33 22C38 14 46 12 49 15C51 17 47 24 40 27C35 29 33 26 33 22Z' fill='url(%23l1)'/%3E%3Cpath d='M31 26C26 19 18 17 15 20C13 22 17 28 24 30C29 32 31 29 31 26Z' fill='url(%23l2)'/%3E%3Cpath d='M34 30C37 26 42 25 44 27C45 28 43 32 38 33C35 34 34 32 34 30Z' fill='%23a8e650' opacity='0.8'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%238dd3a8'/%3E%3Cstop offset='100%25' stop-color='%233fb28c'/%3E%3C/linearGradient%3E%3ClinearGradient id='l1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23a8e650'/%3E%3Cstop offset='100%25' stop-color='%235dba2f'/%3E%3C/linearGradient%3E%3ClinearGradient id='l2' x1='1' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%238edc40'/%3E%3Cstop offset='100%25' stop-color='%234aab20'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='28' r='20' fill='%23fdfbf4'/%3E%3Cellipse cx='32' cy='38' rx='10' ry='6' fill='%238B6B52'/%3E%3Cellipse cx='32' cy='37' rx='9' ry='5' fill='%239B7B62'/%3E%3Cpath d='M32 36C32 36 31 24 32 18' stroke='%236BBF3B' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M33 22C38 14 46 12 49 15C51 17 47 24 40 27C35 29 33 26 33 22Z' fill='url(%23l1)'/%3E%3Cpath d='M31 26C26 19 18 17 15 20C13 22 17 28 24 30C29 32 31 29 31 26Z' fill='url(%23l2)'/%3E%3Cpath d='M34 30C37 26 42 25 44 27C45 28 43 32 38 33C35 34 34 32 34 30Z' fill='%23a8e650' opacity='0.8'/%3E%3C/svg%3E">
 <link rel="dns-prefetch" href="https://script.google.com">
@@ -3730,6 +3733,10 @@
       const fc = document.getElementById('footCopy');
       if(fc) fc.textContent = '© 2026 ' + schoolName + ' – ' + schoolAddr;
     }
+    // Lưu ý: meta tag (Open Graph cho Zalo/FB) là BRAND CHUNG cố định
+    // ("Hồ sơ Trường Mầm non · Giải pháp Công nghệ số") — không cập nhật theo từng trường
+    // để bot social hiển thị đồng nhất khi share link (bot KHÔNG chạy JS).
+
     // Precompute admin hash (async, không block — cached cho showKdcl dùng sau)
     if(typeof _precomputeAdminHash === 'function'){
       _precomputeAdminHash();
