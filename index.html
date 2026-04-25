@@ -2475,11 +2475,14 @@
   // 🔗 URL API (Google Apps Script /exec)
   // ⚠️ CHỖ DUY NHẤT NGƯỜI TRIỂN KHAI CẦN SỬA — dòng `const API_URL = ...` ngay dưới.
   //
-  // CÁCH DÁN URL (an toàn cho mọi trình soạn thảo):
-  //   1. Bấm Ctrl+H (Find & Replace)
-  //   2. Find:    PASTE_YOUR_WEB_APP_URL_HERE
-  //   3. Replace: https://script.google.com/macros/s/AKfyc.../exec  ← URL thật của bạn
-  //   4. Bấm "Replace All" — AN TOÀN vì marker chỉ xuất hiện 1 chỗ duy nhất trong file
+  // CÁCH SỬA URL:
+  //   1. Bấm Ctrl+F → tìm: const API_URL =
+  //   2. Sửa CHỈ chuỗi giữa 2 dấu nháy đơn thành URL Web App của bạn
+  //      (giữ nguyên `const`, dấu `=`, dấu nháy đơn, và dấu `;` cuối)
+  //   3. Ctrl+S lưu file
+  //
+  // Mỗi trường = 1 file index.html riêng. Template gốc đã có sẵn URL của 1 deploy mẫu;
+  // mỗi lần deploy cho trường mới → copy template → sửa URL → lưu thành file riêng.
   //
   // CBGV/giáo viên các trường KHÔNG cần đụng vào dòng này — chỉ mở web là dùng.
   // (Trường hợp đặc biệt cần đổi URL sau khi deploy: Admin → "🔧 Cấu hình kết nối"
@@ -2531,6 +2534,18 @@
   }
   function escapeHtml(s){
     return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+  }
+  // Whitelist URL ảnh trước khi đưa vào CSS background-image. Trả '' nếu không an toàn.
+  // Loại bỏ control char, dấu nháy, ngoặc, backslash — để CSS url(...) không thể bị inject.
+  function _safeImageUrl(url){
+    if(!url) return '';
+    const s = String(url).trim();
+    if(/[\x00-\x1F\x7F"'()\\]/.test(s)) return '';
+    try{
+      const u = new URL(s, location.href);
+      if(u.protocol === 'http:' || u.protocol === 'https:' || u.protocol === 'data:') return s;
+    } catch(e){}
+    return '';
   }
   function countLeaves(nodes){
     let t=0,f=0;
@@ -2905,15 +2920,40 @@
   function renderCarousel(){
     if(!IMAGES.length) return;
     const carousel = document.getElementById('carousel');
-    carousel.innerHTML = IMAGES.map((img, i) => {
+    carousel.textContent = ''; // clear
+
+    IMAGES.forEach((img) => {
+      const safeUrl = _safeImageUrl(img.url);
       const tag = TYPE_LABELS[img.type] || img.type || 'Mới';
-      return `<div class="slide" style="background-image:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.3)),url('${escapeHtml(img.url)}')">
-        <div class="slide-caption">
-          <div><strong>${escapeHtml(img.title)}</strong><span>${escapeHtml(img.desc)}</span></div>
-          <span class="slide-tag" data-type="${escapeHtml(img.type)}">${escapeHtml(tag)}</span>
-        </div>
-      </div>`;
-    }).join('');
+
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      if(safeUrl){
+        // Gán qua property — CSS parser nhận diện url() như 1 giá trị, không thể inject property khác.
+        slide.style.backgroundImage = "linear-gradient(180deg,transparent 50%,rgba(0,0,0,.3)),url('" + safeUrl + "')";
+      }
+
+      const caption = document.createElement('div');
+      caption.className = 'slide-caption';
+
+      const inner = document.createElement('div');
+      const strong = document.createElement('strong');
+      strong.textContent = img.title || '';
+      const span = document.createElement('span');
+      span.textContent = img.desc || '';
+      inner.appendChild(strong);
+      inner.appendChild(span);
+
+      const tagSpan = document.createElement('span');
+      tagSpan.className = 'slide-tag';
+      tagSpan.dataset.type = img.type || '';
+      tagSpan.textContent = tag;
+
+      caption.appendChild(inner);
+      caption.appendChild(tagSpan);
+      slide.appendChild(caption);
+      carousel.appendChild(slide);
+    });
 
     const slides = carousel.querySelectorAll('.slide');
     let current = 0;
@@ -3229,7 +3269,7 @@
         fetchGAS(
           function(data){
             // Update cache
-            try { localStorage.setItem(CACHE_KEY, JSON.stringify({ts: Date.now(), d: data})); } catch(e){}
+            _cacheSave(data);
             // Cập nhật MINHCHUNG global theo data mới nhất
             if(data.minhChung) MINHCHUNG = mergeMCSeed(data.minhChung);
             if(data.hss) HSS = data.hss;
@@ -3414,7 +3454,46 @@
 
   // ============ FETCH DATA FROM GAS API ============
   const CACHE_KEY = 'mnDienXuan_data';
+  const CACHE_VERSION = 'v2026.04'; // ⚠ TĂNG khi đổi schema (VD: thêm cột vào MinhChung) → mọi trình duyệt tự xoá cache cũ
   const CACHE_TTL = 10 * 60 * 1000; // 10 phút — dữ liệu cache hết hạn sau 10 phút
+
+  // Đọc cache nếu version khớp; nếu schema cũ → tự xoá, trả null.
+  function _cacheLoad(){
+    try{
+      const raw = localStorage.getItem(CACHE_KEY);
+      if(!raw) return null;
+      const c = JSON.parse(raw);
+      if(!c || c.version !== CACHE_VERSION || !c.d){
+        try{ localStorage.removeItem(CACHE_KEY); } catch(e){}
+        return null;
+      }
+      return c;
+    } catch(e){
+      try{ localStorage.removeItem(CACHE_KEY); } catch(x){}
+      return null;
+    }
+  }
+  // Ghi cache có version. Khi vỡ quota → bỏ phần "classes" (lớn nhất, có thể build lại từ stats), thử lưu lại;
+  // nếu vẫn vỡ → bỏ luôn (im lặng — UI vẫn chạy bình thường, chỉ là load lần sau gọi GAS lại).
+  function _cacheSave(data){
+    const payload = {version: CACHE_VERSION, ts: Date.now(), d: data};
+    try{
+      localStorage.setItem(CACHE_KEY, JSON.stringify(payload));
+      return true;
+    } catch(e){
+      if(e && (e.name === 'QuotaExceededError' || e.code === 22 || e.code === 1014)){
+        try{
+          const slim = Object.assign({}, data);
+          delete slim.classes; // build lại được từ students nếu có sau này
+          localStorage.setItem(CACHE_KEY, JSON.stringify({version: CACHE_VERSION, ts: Date.now(), d: slim, partial: true}));
+          return true;
+        } catch(e2){
+          try{ localStorage.removeItem(CACHE_KEY); } catch(x){}
+        }
+      }
+      return false;
+    }
+  }
 
   function boot(data, isCache){
     HSS = data.hss || [];
@@ -3438,7 +3517,7 @@
     if(isCache){
       // Đã dùng cache → refresh ngầm từ GAS
       fetchGAS(function(freshData){
-        try{ localStorage.setItem(CACHE_KEY, JSON.stringify({ts: Date.now(), d: freshData})); } catch(e){}
+        _cacheSave(freshData);
         boot(freshData, false);
       }, function(){}); // im lặng nếu lỗi refresh ngầm
     }
@@ -3447,29 +3526,29 @@
   function loadError(msg, kind){
     const ls = document.getElementById('loadScreen');
     if(!ls) return;
-    // kind = 'notConfigured' → URL placeholder chưa được dán
+    // kind = 'notConfigured' → URL chưa hợp lệ (không chứa 'AKfyc')
     //      = 'connection'    → URL có nhưng gọi API lỗi
     //      = (rỗng)          → tự nhận diện theo URL hiện tại
     if(!kind){
       const u = (typeof getApiUrl === 'function') ? getApiUrl() : '';
-      kind = (!u || u.indexOf('AKfyc__PASTE_HERE__') >= 0 || u.indexOf('AKfyc') < 0) ? 'notConfigured' : 'connection';
+      kind = (!u || u.indexOf('AKfyc') < 0) ? 'notConfigured' : 'connection';
     }
     if(kind === 'notConfigured'){
       ls.innerHTML = `
         <div style="text-align:center;padding:40px;max-width:640px">
           <div style="font-size:3rem;margin-bottom:20px">⚙️</div>
           <h3 style="font-family:Fraunces,serif;margin-bottom:12px">Trang web chưa được cấu hình</h3>
-          <p style="opacity:.95;margin-bottom:14px;font-size:.96rem;line-height:1.55">Người triển khai (admin trường / Phòng IT) chưa dán URL Google Apps Script vào file <code style="background:rgba(255,255,255,.2);padding:2px 8px;border-radius:6px">index.html</code>.</p>
+          <p style="opacity:.95;margin-bottom:14px;font-size:.96rem;line-height:1.55">Người triển khai (admin trường / Phòng IT) chưa cấu hình URL Google Apps Script trong file <code style="background:rgba(255,255,255,.2);padding:2px 8px;border-radius:6px">index.html</code>.</p>
           <div style="background:rgba(255,255,255,.12);padding:14px 18px;border-radius:10px;margin-bottom:18px;text-align:left;font-size:.88rem;line-height:1.7;max-width:560px;margin-left:auto;margin-right:auto">
             <b>👨‍💻 Dành cho người triển khai:</b><br>
             1. Mở <code style="background:rgba(0,0,0,.18);padding:1px 6px;border-radius:4px">index.html</code> bằng Notepad / VS Code<br>
-            2. Bấm <b>Ctrl+H</b> (Find &amp; Replace)<br>
-            3. <b>Find:</b> <code style="background:rgba(0,0,0,.18);padding:1px 6px;border-radius:4px">PASTE_YOUR_WEB_APP_URL_HERE</code><br>
-            4. <b>Replace:</b> URL Web App của bạn (dạng <code>https://script.google.com/macros/s/AKfyc.../exec</code>)<br>
-            5. Bấm <b>Replace All</b> → Lưu file → Tải lại trang
+            2. Bấm <b>Ctrl+F</b> → tìm: <code style="background:rgba(0,0,0,.18);padding:1px 6px;border-radius:4px">const API_URL =</code><br>
+            3. Sửa CHỈ chuỗi giữa 2 dấu nháy đơn thành URL Web App của bạn<br>
+            &nbsp;&nbsp;&nbsp;(dạng <code>https://script.google.com/macros/s/AKfyc.../exec</code>)<br>
+            4. <b>Ctrl+S</b> lưu file → Tải lại trang
           </div>
-          <p style="opacity:.7;font-size:.78rem;margin-bottom:18px">Marker chỉ xuất hiện <b>1 lần duy nhất</b> trong file → Replace All AN TOÀN.<br>Xem chi tiết tại <code>backend/HUONG_DAN_CAI_DAT.md</code></p>
-          <button class="btn btn-primary" onclick="location.reload()">Đã dán URL — Tải lại</button>
+          <p style="opacity:.7;font-size:.78rem;margin-bottom:18px">Hoặc nhập URL qua wizard: Admin → "🔧 Cấu hình kết nối".<br>Xem chi tiết tại <code>backend/HUONG_DAN_CAI_DAT.md</code></p>
+          <button class="btn btn-primary" onclick="location.reload()">Đã sửa URL — Tải lại</button>
         </div>`;
     } else {
       ls.innerHTML = `
@@ -3522,22 +3601,17 @@
       loadError('', 'notConfigured');
       return;
     }
-    try{
-      const raw = localStorage.getItem(CACHE_KEY);
-      if(raw){
-        const cache = JSON.parse(raw);
-        if(cache && cache.d){
-          // Cache còn dùng được → boot ngay, refresh ngầm
-          boot(cache.d, true);
-          return;
-        }
-      }
-    } catch(e){ try{ localStorage.removeItem(CACHE_KEY); } catch(x){} }
+    const cache = _cacheLoad();
+    if(cache && cache.d){
+      // Cache còn dùng được (đúng version) → boot ngay, refresh ngầm
+      boot(cache.d, true);
+      return;
+    }
 
     // Không có cache → loading screen + fetch từ GAS
     fetchGAS(
       function(data){
-        try{ localStorage.setItem(CACHE_KEY, JSON.stringify({ts: Date.now(), d: data})); } catch(e){}
+        _cacheSave(data);
         boot(data, false);
       },
       function(msg){ loadError(msg, 'connection'); }
@@ -4565,7 +4639,7 @@
       try{
         fetchGAS(
           function(freshData){
-            try{ localStorage.setItem(CACHE_KEY, JSON.stringify({ts: Date.now(), d: freshData})); }catch(e){}
+            _cacheSave(freshData);
             // Re-boot để cập nhật window.TEACHERS, CLASSES, STATS, MINHCHUNG
             boot(freshData, false);
             // Đợi 1 frame để boot hoàn tất (render xong các section)
@@ -5159,8 +5233,9 @@ const DEFAULT_APPS_SCRIPT_URL = (() => {
     const v = localStorage.getItem('mn_api_url_v1');
     if (v && typeof v === 'string' && v.indexOf('AKfyc') >= 0) return v.trim();
   } catch (e) {}
-  // Fallback: dùng API_URL đã được dán ở dòng `const API_URL = ...` đầu file
-  return (typeof API_URL !== 'undefined') ? API_URL : 'PASTE_YOUR_WEB_APP_URL_HERE';
+  // Fallback: dùng API_URL đã được sửa ở dòng `const API_URL = ...` đầu file.
+  // Trả chuỗi rỗng nếu API_URL chưa định nghĩa → isApiUrlValid() sẽ trả false → loadError('notConfigured').
+  return (typeof API_URL !== 'undefined') ? API_URL : '';
 })();
 
 const loadLS = (k, fb = null) => { try { return JSON.parse(localStorage.getItem(k)) ?? fb; } catch { return fb; } };
