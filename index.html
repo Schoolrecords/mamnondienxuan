@@ -202,10 +202,11 @@
   .kicker{color:var(--g2);font-weight:600;text-transform:uppercase;font-size:.78rem;letter-spacing:.2em;display:block;margin-bottom:8px}
   .records-head h2{font-size:clamp(2rem,3.5vw,3rem);color:var(--g-deep);margin-bottom:14px;font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.02em;line-height:1.1}
   .mc-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:22px 0 0}
+  .rec-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px}
   .rec-citation-btn{display:inline-flex;align-items:center;gap:10px;margin:0;padding:10px 20px;background:white;border:1.5px solid var(--g2);color:var(--g-deep);border-radius:999px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;box-shadow:0 4px 14px -6px rgba(7,67,136,.2);transition:all .25s}
   .rec-print-btn{border-color:#e08a4a;color:#c47040}
   .rec-print-btn:hover{background:#e08a4a;color:white;border-color:#e08a4a;box-shadow:0 8px 20px -6px rgba(224,138,74,.4)}
-  .records-head .rec-citation-btn{margin-top:22px}
+  /* margin-top giờ áp ở .rec-actions wrapper, không cần đặt cho individual button */
   .rec-citation-btn:hover{background:var(--g2);color:white;transform:translateY(-2px);box-shadow:0 8px 20px -6px rgba(7,67,136,.35)}
   .rec-citation-btn .rec-citation-icon{font-size:1.05rem}
   .rec-citation-btn .rec-citation-toggle{font-size:.9rem;transition:transform .3s;opacity:.8}
@@ -254,7 +255,13 @@
   .cat-detail{display:none;background:white;border-radius:24px;padding:40px;max-width:1100px;margin:40px auto 0;box-shadow:0 30px 60px -30px rgba(7,67,136,.25)}
   .cat-detail.active{display:block;animation:fadeSlide .4s ease}
   @keyframes fadeSlide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-  .detail-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid #e2e8f0;flex-wrap:wrap;gap:12px}
+  .detail-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:20px;border-bottom:1px solid #e2e8f0;flex-wrap:wrap;gap:12px}
+  .detail-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:.82rem;color:#64748b;margin-bottom:18px;padding:10px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px}
+  .detail-meta .stat{font-weight:600;color:var(--g-deep)}
+  .detail-meta .ts{font-size:.76rem;color:#94a3b8}
+  .detail-meta .refresh-btn{margin-left:auto;padding:6px 14px;border-radius:8px;background:var(--g3);color:white;border:0;font-family:inherit;font-size:.78rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+  .detail-meta .refresh-btn:hover:not(:disabled){background:var(--g-deep);transform:translateY(-1px)}
+  .detail-meta .refresh-btn:disabled{background:#94a3b8;cursor:wait}
   .detail-head h3{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--g-deep);display:flex;align-items:center;gap:12px}
   .close-btn{background:#f3f6f4;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1rem;color:#64748b}
   .close-btn:hover{background:var(--g2);color:white}
@@ -268,14 +275,26 @@
   .sub-group.open .sub-toggle{transform:rotate(90deg)}
   .sub-list{max-height:0;overflow:hidden;transition:max-height .5s ease}
   .sub-group.open .sub-list{max-height:2000px}
-  .leaf{display:flex;align-items:center;gap:14px;padding:12px 20px 12px 52px;border-top:1px solid #f3f6f4;font-size:.88rem}
-  .leaf-code{font-family:'Fraunces',serif;color:var(--g2);font-weight:600;min-width:72px;font-size:.82rem;flex-shrink:0}
-  .leaf-name{flex:1;color:#334155}
-  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--g2);flex-shrink:0}
-  .status-dot.empty{background:#cbd3cf}
-  .open-btn{padding:6px 14px;border-radius:999px;background:var(--g2);color:white;border:none;font-size:.75rem;font-family:inherit;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;white-space:nowrap}
-  .open-btn:hover{background:var(--g3)}
-  .open-btn.disabled{background:#cbd5e1;color:#94a3b8;cursor:not-allowed}
+  /* Leaf row — 4 cột grid: Mã hồ sơ | Danh mục Hồ sơ (lớn nhất) | Người phụ trách (~1/3) | Trạng thái */
+  .leaf{display:grid;grid-template-columns:80px minmax(0,3fr) minmax(0,1fr) 160px;align-items:center;gap:14px;padding:11px 20px 11px 28px;border-bottom:1px dashed #cfddef;font-size:.88rem;transition:background .15s}
+  .leaf:last-child{border-bottom:none}
+  .leaf:nth-child(even){background:#f8fafc}    /* zebra stripes — odd row có background subtle */
+  .leaf:hover{background:#eef4fb}                /* hover light navy */
+  .leaf-code{font-family:'Fraunces',serif;color:var(--g2);font-weight:600;font-size:.82rem;white-space:nowrap;border-right:1px dashed #cfddef;padding-right:14px;margin-right:0}
+  .leaf-name{color:#334155;line-height:1.4;border-right:1px dashed #cfddef;padding-right:14px;margin-right:0}
+  .leaf-assign{color:#64748b;font-size:.82rem;line-height:1.4;overflow-wrap:break-word;border-right:1px dashed #cfddef;padding-right:14px;margin-right:0}
+  .leaf-assign-empty{color:#cbd5e1;font-style:italic}
+  .leaf-status{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;justify-content:flex-start}
+  .leaf-badge{padding:4px 12px;border-radius:999px;font-size:.74rem;font-weight:600;letter-spacing:.02em}
+  .leaf-badge.has{background:#dcfce7;color:#15803d;border:1px solid #86efac}
+  .leaf-badge.no{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+  .leaf-folder{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:#eef4fb;color:var(--g3);font-size:1.1rem;text-decoration:none;transition:all .2s;border:1px solid #d6e5f3}
+  .leaf-folder:hover{background:var(--g3);color:white;transform:translateY(-1px);box-shadow:0 4px 10px rgba(7,67,136,.2)}
+  .leaf-folder.disabled{background:#f1f5f9;color:#cbd5e1;cursor:not-allowed;pointer-events:none;border-color:#e2e8f0}
+  /* Header row mô tả các cột — border đậm hơn để phân biệt rõ với data rows */
+  .leaf-header{display:grid;grid-template-columns:80px minmax(0,3fr) minmax(0,1fr) 160px;gap:14px;padding:10px 20px 10px 28px;font-size:.7rem;font-weight:700;color:var(--g-deep);text-transform:uppercase;letter-spacing:.06em;background:#dbe7f5;border-bottom:2px solid var(--g2);border-top:2px solid var(--g2)}
+  .leaf-header > *{border-right:1px solid rgba(7,67,136,.18);padding-right:14px}
+  .leaf-header > *:last-child{border-right:none}
   .sub-nest{margin:0 20px 8px 20px;border-left:3px solid #e8f5ee;padding:4px 0 4px 14px}
   .nest-head{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#f1f7fc;border-radius:8px;margin-bottom:4px;font-size:.88rem}
   .nest-head:hover{background:#e7f0fa}
@@ -1566,12 +1585,18 @@
     <span class="kicker">Hệ thống hồ sơ điện tử</span>
     <h2>Danh mục Hồ sơ số</h2>
     <p style="color:#5a6b64;max-width:640px;margin:0 auto">Toàn bộ <b id="recCount">77</b> hồ sơ số được tổ chức thành <b>6 nhóm lớn</b>, đồng bộ trực tiếp từ Google Sheet. Nhấn vào thẻ để xem chi tiết và mở hồ sơ trên Google Drive.</p>
-    <button type="button" class="rec-citation-btn" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open')" aria-expanded="false">
-      <span class="rec-citation-icon">📜</span>
-      <span>Căn cứ pháp lý</span>
-      <span class="rec-citation-toggle">▾</span>
-    </button>
-    <div class="rec-citation">
+    <div class="rec-actions">
+      <button type="button" class="rec-citation-btn" onclick="document.getElementById('recCitationBox').classList.toggle('open');this.classList.toggle('open')" aria-expanded="false">
+        <span class="rec-citation-icon">📜</span>
+        <span>Căn cứ pháp lý</span>
+        <span class="rec-citation-toggle">▾</span>
+      </button>
+      <button type="button" class="rec-citation-btn rec-print-btn" onclick="printDanhMucHSS()" title="Xem trước & in toàn bộ Danh mục Hồ sơ số (khổ A4 ngang)">
+        <span class="rec-citation-icon">🖨</span>
+        <span>Xem/In Danh mục</span>
+      </button>
+    </div>
+    <div class="rec-citation" id="recCitationBox">
       <div class="rec-citation-body">
         <p class="rec-citation-lead">Danh mục hồ sơ số của Nhà trường được xây dựng trên cơ sở các văn bản quy phạm pháp luật hiện hành (cập nhật đến tháng 4/2026):</p>
         <ol class="rec-citation-list">
@@ -1598,6 +1623,7 @@
       <h3><span id="detailIcon">🏫</span><span id="detailName"></span></h3>
       <button class="close-btn" onclick="closeDetail()">✕</button>
     </div>
+    <div id="detailMeta" class="detail-meta"></div>
     <div id="detailBody"></div>
   </div>
 </section>
@@ -2200,9 +2226,10 @@
             <input type="text" id="admHssSearch" placeholder="🔍 Tìm nhanh theo tên hoặc mã hồ sơ..." oninput="admFilterHSS()">
           </div>
           <div style="background:#f1f7fc;border:1px solid #cbd5e1;border-radius:12px;padding:14px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
-            <div style="flex:0 0 90px"><label style="font-size:.7rem;font-weight:600;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px">Mã (VD: 1.3)</label><input type="text" id="admNewCode" placeholder="1.11" style="width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.82rem;font-family:inherit"></div>
-            <div style="flex:1;min-width:160px"><label style="font-size:.7rem;font-weight:600;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px">Tên danh mục hồ sơ</label><input type="text" id="admNewName" placeholder="Tên hồ sơ mới..." style="width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.82rem;font-family:inherit"></div>
-            <div style="flex:1;min-width:160px"><label style="font-size:.7rem;font-weight:600;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px">Link Google Drive</label><input type="text" id="admNewLink" placeholder="https://drive.google.com/..." style="width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.82rem;font-family:inherit"></div>
+            <div style="flex:0 0 90px"><label style="font-size:.7rem;font-weight:600;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px">Mã hồ sơ</label><input type="text" id="admNewCode" placeholder="1.11" style="width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.82rem;font-family:inherit"></div>
+            <div style="flex:2;min-width:200px"><label style="font-size:.7rem;font-weight:600;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px">Danh mục Hồ sơ</label><input type="text" id="admNewName" placeholder="Tên hồ sơ mới..." style="width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.82rem;font-family:inherit"></div>
+            <div style="flex:2;min-width:180px"><label style="font-size:.7rem;font-weight:600;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px">Link Google Drive</label><input type="text" id="admNewLink" placeholder="https://drive.google.com/..." style="width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.82rem;font-family:inherit"></div>
+            <div style="flex:1;min-width:140px"><label style="font-size:.7rem;font-weight:600;color:#64748b;text-transform:uppercase;display:block;margin-bottom:4px">Người phụ trách</label><input type="text" id="admNewAssign" placeholder="VD: Hiệu trưởng" style="width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.82rem;font-family:inherit"></div>
             <button class="adm-btn adm-btn-primary" style="padding:9px 18px;font-size:.82rem;white-space:nowrap" onclick="admAddHSS()">＋ Thêm</button>
           </div>
           <div class="adm-edit-wrap" id="admHssTable">
@@ -2316,6 +2343,13 @@
           <div class="adm-actions">
             <button class="adm-btn adm-btn-outline" onclick="admRefresh()">🔄 Làm mới dữ liệu</button>
             <button class="adm-btn adm-btn-danger" onclick="admClearCache()">🗑 Xóa bộ nhớ đệm trình duyệt</button>
+          </div>
+
+          <h4 style="font-family:'Fraunces',serif;color:var(--g-deep);margin:24px 0 8px">📁 Trạng thái Drive folder</h4>
+          <p style="font-size:.82rem;color:#64748b;margin-bottom:10px">Quét tất cả 77 folder Drive của Hồ sơ số → cập nhật cột "Trạng thái" (Đã có / Chưa có) trên giao diện. Mặc định auto-quét mỗi đêm 02:00. Nút này dùng khi cần quét ngay (vd: vừa upload file mới).</p>
+          <p style="font-size:.78rem;color:#94a3b8;margin-bottom:10px">⏱ Quét mất ~30-60 giây tùy số folder. KHÔNG đóng tab khi đang quét.</p>
+          <div class="adm-actions">
+            <button class="adm-btn adm-btn-outline" onclick="admRefreshFolderStatus(this)">🔄 Quét trạng thái Drive ngay</button>
           </div>
         </div>
 
@@ -2548,6 +2582,7 @@
 
   // ============ STATE ============
   let HSS = [], TEACHERS = [], CLASSES = [], IMAGES = [], STATS = {};
+  let FOLDER_STATUS = {items:{}, lastChecked:null}; // {items:{'mã':{status,count}}, lastChecked:ISO}
   let currentClass = null;
   const CAT_ICONS = ['🏫','👩‍🏫','🏢','🤝','👶','🎗️','📁','📁'];
   const CAT_TINTS = ['#cfe1f5','#fff0d1','#dae7ff','#f0dcff','#ffdfd1','#ffe5b4','#e8f5ee','#e8f5ee'];
@@ -2624,13 +2659,37 @@
     }).join('');
   }
 
+  // Trả về object trạng thái cho 1 mã HSS — dựa trên cache _FolderStatus + có link hay không.
+  // 2 nhãn user-facing: "Đã có" (xanh) | "Chưa có" (đỏ).
+  // OK   = "Đã có"  (folder có file)
+  // EMPTY/NO_LINK/ERROR = "Chưa có" (3 lý do, hover xem chi tiết)
+  function _statusOf(code, link){
+    const fs = (FOLDER_STATUS.items || {})[code];
+    const status = fs ? fs.status : (link ? 'EMPTY' : 'NO_LINK'); // chưa refresh → đoán theo link
+    const count  = fs ? fs.count : 0;
+    if(status === 'OK')       return {label:'Đã có', cls:'has', count, tip: count + ' file trong folder'};
+    if(status === 'EMPTY')    return {label:'Chưa có', cls:'no', count:0, tip:'Folder rỗng — chưa upload tài liệu'};
+    if(status === 'ERROR')    return {label:'Chưa có', cls:'no', count:0, tip:'Lỗi truy cập folder — kiểm tra link/quyền share'};
+    return                          {label:'Chưa có', cls:'no', count:0, tip:'Chưa dán link Drive vào sheet HSS'};
+  }
+
   function renderLeaves(items){
-    return items.map(it => `<div class="leaf">
-      <span class="status-dot ${it.has ? '' : 'empty'}"></span>
-      <span class="leaf-code">${it.code}</span>
-      <span class="leaf-name">${escapeHtml(it.name)}</span>
-      ${it.has ? `<a class="open-btn" href="${escapeHtml(it.link)}" target="_blank" rel="noopener">Mở</a>` : `<span class="open-btn disabled">Chưa có</span>`}
-    </div>`).join('');
+    return items.map(it => {
+      const st = _statusOf(it.code, it.link);
+      const assign = String(it.assign || '').trim();
+      const folderIcon = it.link
+        ? `<a class="leaf-folder" href="${escapeHtml(it.link)}" target="_blank" rel="noopener" title="Mở folder Drive">📁</a>`
+        : `<span class="leaf-folder disabled" title="Chưa có link Drive">📁</span>`;
+      return `<div class="leaf">
+        <span class="leaf-code">${escapeHtml(it.code)}</span>
+        <span class="leaf-name">${escapeHtml(it.name)}</span>
+        <span class="leaf-assign" title="Người phụ trách">${assign ? escapeHtml(assign) : '<span class="leaf-assign-empty">—</span>'}</span>
+        <span class="leaf-status">
+          <span class="leaf-badge ${st.cls}" title="${escapeHtml(st.tip)}">${st.label}</span>
+          ${folderIcon}
+        </span>
+      </div>`;
+    }).join('');
   }
 
   function renderSubgroup(g){
@@ -2685,6 +2744,13 @@
       }
     });
 
+    // Header cột (chỉ hiện khi sub-group mở) — gắn vào đầu sub-list
+    const colHeader = `<div class="leaf-header">
+      <span>Mã hồ sơ</span>
+      <span>Danh mục Hồ sơ</span>
+      <span>Người phụ trách</span>
+      <span class="leaf-header-status">Trạng thái</span>
+    </div>`;
     return `<div class="sub-group">
       <div class="sub-head" onclick="this.parentElement.classList.toggle('open')">
         <div class="sub-title"><span>📂</span><span>${escapeHtml(g.code)}. ${escapeHtml(g.name)}</span></div>
@@ -2693,15 +2759,88 @@
           <span class="sub-toggle">▸</span>
         </div>
       </div>
-      <div class="sub-list">${innerHtml}</div>
+      <div class="sub-list">${colHeader}${innerHtml}</div>
     </div>`;
   }
+
+  // Đếm số leaf trong cat đã có file (status === OK), dựa trên FOLDER_STATUS cache
+  function _countCatStatus(cat){
+    let total = 0, hasFile = 0;
+    (function walk(nodes){
+      nodes.forEach(n => {
+        if(n.leaf){
+          total++;
+          const fs = (FOLDER_STATUS.items || {})[n.code];
+          if(fs && fs.status === 'OK') hasFile++;
+        } else if(n.children) walk(n.children);
+      });
+    })(cat.children || []);
+    return {total, hasFile};
+  }
+
+  function _formatCheckedTime(iso){
+    if(!iso) return 'Chưa kiểm tra lần nào';
+    try{
+      const d = new Date(iso);
+      const pad = n => String(n).padStart(2,'0');
+      return `Cập nhật: ${pad(d.getHours())}:${pad(d.getMinutes())} ${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`;
+    } catch(e){ return ''; }
+  }
+
+  function _renderDetailMeta(cat){
+    const c = _countCatStatus(cat);
+    const ts = _formatCheckedTime((FOLDER_STATUS || {}).lastChecked);
+    return `<span class="stat">📊 ${c.hasFile}/${c.total} hồ sơ đã có file</span>
+      <span class="ts">${escapeHtml(ts)}</span>
+      <button class="refresh-btn" onclick="refreshFolderStatusFE(this)">🔄 Kiểm tra ngay</button>`;
+  }
+
+  // Gọi backend refreshFolderStatus → đợi 30-50s → reload data → re-render
+  window.refreshFolderStatusFE = function(btn){
+    if(!btn) return;
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Đang kiểm tra... (30-60s)';
+    fetch(getApiUrl(), {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'}, // tránh CORS preflight
+      body: JSON.stringify({action:'refreshFolderStatus'})
+    })
+    .then(r => r.json())
+    .then(resp => {
+      if(!resp || !resp.ok){
+        btn.innerHTML = '❌ Lỗi — thử lại';
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = original; }, 3000);
+        return;
+      }
+      // Reload data để có folderStatus mới
+      try{ localStorage.removeItem(CACHE_KEY); } catch(e){}
+      fetchGAS(function(freshData){
+        _cacheSave(freshData);
+        boot(freshData, false);
+        // Sau khi boot xong, re-open cat hiện tại để thấy status mới
+        const detailName = document.getElementById('detailName').textContent;
+        const idx = HSS.findIndex(c => c.name === detailName);
+        if(idx >= 0) openCat(idx);
+      }, function(msg){
+        btn.innerHTML = '❌ Lỗi tải dữ liệu';
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = original; }, 3000);
+      });
+    })
+    .catch(err => {
+      btn.innerHTML = '❌ Lỗi kết nối';
+      setTimeout(() => { btn.disabled = false; btn.innerHTML = original; }, 3000);
+    });
+  };
 
   function openCat(i){
     const cat = HSS[i];
     if(!cat) return;
     document.getElementById('detailIcon').textContent = CAT_ICONS[i] || '📁';
     document.getElementById('detailName').textContent = cat.name;
+
+    // Render meta strip (thống kê tỉ lệ "Đã có" + thời gian cập nhật + nút refresh)
+    document.getElementById('detailMeta').innerHTML = _renderDetailMeta(cat);
 
     // Render children theo đúng thứ tự, xử lý cả leaf lẫn group
     const children = cat.children || [];
@@ -3295,7 +3434,7 @@
     const overlay = document.createElement('div');
     overlay.id = 'mcPrintFetchOverlay';
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(20,40,30,.55);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)';
-    overlay.innerHTML = '<div style="background:white;color:#1a3027;padding:28px 36px;border-radius:14px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:400px"><div style="font-size:2.6rem;margin-bottom:12px;animation:spin 1.5s linear infinite;display:inline-block">🔄</div><div style="font-weight:600;font-size:1rem;margin-bottom:6px">Đang tải dữ liệu mới nhất từ Google Sheet…</div><div style="font-size:.82rem;color:#7a8a82">Để bảng in luôn chính xác theo thời gian thực</div></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
+    overlay.innerHTML = '<div style="background:white;color:#1a3027;padding:28px 36px;border-radius:14px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:400px"><div style="font-size:2.6rem;margin-bottom:12px;animation:spin 1.5s linear infinite;display:inline-block">🔄</div><div style="font-weight:600;font-size:1rem;margin-bottom:6px">Đang tải dữ liệu mới nhất…</div><div style="font-size:.82rem;color:#7a8a82">Để bảng in luôn chính xác theo thời gian thực</div></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
     document.body.appendChild(overlay);
 
     // Clear cache để buộc fetch tươi
@@ -3321,7 +3460,7 @@
       overlay.remove();
     } catch(e) {
       overlay.remove();
-      if (!confirm('⚠ Không tải được dữ liệu mới nhất từ Google Sheet:\n  ' + (e.message || 'Lỗi') + '\n\nVẫn in với dữ liệu hiện có trên trình duyệt?')) {
+      if (!confirm('⚠ Không tải được dữ liệu mới nhất:\n  ' + (e.message || 'Lỗi') + '\n\nVẫn in với dữ liệu hiện có trên trình duyệt?')) {
         return;
       }
     }
@@ -3480,6 +3619,205 @@
     }, 500);
   }
 
+  // ============ XEM / IN DANH MỤC HỒ SƠ SỐ ============
+  // Mở preview A4 ngang (lề trái 3cm, các phía 1.5cm — theo NĐ 30/2020 + yêu cầu user).
+  // Gồm: letterhead Quốc hiệu + Tên trường, tiêu đề, bảng 4 cột (STT/Mã/Danh mục/Người PT),
+  // group headers cho 6 Tiêu chuẩn + sub-groups, chữ ký Người lập + Hiệu trưởng.
+  async function printDanhMucHSS(){
+    if(!isApiUrlValid()){
+      if(!HSS || !HSS.length){
+        alert('Chưa có dữ liệu Hồ sơ số để in.');
+        return;
+      }
+      return _doPrintDanhMucHSS();
+    }
+    // Hiện overlay đang fetch
+    const overlay = document.createElement('div');
+    overlay.id = 'hssPrintFetchOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(7,67,136,.55);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)';
+    overlay.innerHTML = '<div style="background:white;color:#0f172a;padding:28px 36px;border-radius:14px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:400px"><div style="font-size:2.6rem;margin-bottom:12px;animation:spin 1.5s linear infinite;display:inline-block">🔄</div><div style="font-weight:600;font-size:1rem;margin-bottom:6px">Đang tải dữ liệu mới nhất…</div><div style="font-size:.82rem;color:#64748b">Để Danh mục in luôn chính xác theo thời gian thực</div></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
+    document.body.appendChild(overlay);
+
+    try { localStorage.removeItem(CACHE_KEY); } catch(e){}
+
+    try {
+      await new Promise((resolve, reject) => {
+        fetchGAS(
+          function(data){
+            _cacheSave(data);
+            if(data.hss) HSS = data.hss;
+            if(data.stats) STATS = data.stats;
+            if(data.teachers) TEACHERS = data.teachers;
+            resolve();
+          },
+          function(err){ reject(new Error(err || 'Fetch lỗi')); },
+          2
+        );
+      });
+      overlay.remove();
+    } catch(e) {
+      overlay.remove();
+      if (!confirm('⚠ Không tải được dữ liệu mới nhất:\n  ' + (e.message || 'Lỗi') + '\n\nVẫn in với dữ liệu hiện có trên trình duyệt?')) {
+        return;
+      }
+    }
+
+    if(!HSS || !HSS.length){
+      alert('Chưa có dữ liệu Hồ sơ số để in.');
+      return;
+    }
+    _doPrintDanhMucHSS();
+  }
+
+  function _doPrintDanhMucHSS(){
+    const cfg = (STATS && STATS.config) || {};
+    const schoolName = (cfg.name || 'Trường Mầm non [Tên trường]').toUpperCase();
+    const schoolAddr = cfg.address || '';
+    const schoolYear = cfg.schoolYear || '';
+    // Tên Hiệu trưởng — ưu tiên admin config, fallback từ DSGV
+    let principal = (window._admGet && _admGet().principal) || '';
+    if (!principal && Array.isArray(TEACHERS)) {
+      const ht = TEACHERS.find(t => {
+        const r = (t.role || '').toLowerCase();
+        return r.includes('hiệu trưởng') && !r.includes('phó');
+      });
+      if (ht) principal = ht.name || '';
+    }
+    const today = new Date();
+    const dd = today.getDate(), mm = today.getMonth()+1, yy = today.getFullYear();
+    const addrParts = schoolAddr.split(',').map(s => s.trim()).filter(Boolean);
+    const ubndLocation = 'UBND ' + (addrParts[0] || 'XÃ/PHƯỜNG').toUpperCase();
+    const locShort = addrParts[0] || schoolAddr;
+
+    // Walk HSS tree → flat rows
+    const ROMAN = ['','I','II','III','IV','V','VI','VII','VIII','IX','X'];
+    let tbody = '';
+    let stt = 0;
+
+    HSS.forEach(cat => {
+      // Top-level header (Tiêu chuẩn 1, 2, ...) — chữ trắng nền navy
+      const roman = ROMAN[parseInt(cat.code, 10)] || cat.code;
+      tbody += '<tr class="cat-row"><td colspan="4"><b>' + roman + '. ' + escapeHtml(cat.name).toUpperCase() + '</b></td></tr>';
+
+      function walkLevel(node, depth){
+        if(node.leaf){
+          stt++;
+          tbody += '<tr>'+
+            '<td style="text-align:center">'+stt+'</td>'+
+            '<td style="text-align:center"><b>'+escapeHtml(node.code)+'</b></td>'+
+            '<td>'+escapeHtml(node.name)+'</td>'+
+            '<td>'+escapeHtml(node.assign||'')+'</td>'+
+            '</tr>';
+          return;
+        }
+        // Sub-group header (1.1, 1.2, hoặc nested 1.10.3...)
+        if(depth >= 1){
+          const dCls = 'd' + Math.min(depth, 3);
+          tbody += '<tr class="grp-row '+dCls+'"><td colspan="4"><b>'+escapeHtml(node.code)+'.</b> '+escapeHtml(node.name)+'</td></tr>';
+        }
+        (node.children||[]).forEach(child => walkLevel(child, depth+1));
+      }
+
+      (cat.children||[]).forEach(child => walkLevel(child, 1));
+    });
+
+    const totalLeaves = stt;
+    const totalCats = HSS.length;
+
+    const html = '<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">'+
+      '<title>Danh mục Hồ sơ số - '+escapeHtml(schoolName)+'</title>'+
+      '<style>'+
+      /* Khổ A4 ngang. Lề: trái 3cm (đóng quyển), phải 1.5cm, trên 1.5cm, dưới 1.5cm — theo yêu cầu user. */
+      '@page{size:A4 landscape;margin:1.5cm 1.5cm 1.5cm 3cm}'+
+      'body{font-family:"Times New Roman",Times,serif;font-size:13pt;color:#000;line-height:1.4}'+
+      '.letterhead{display:table;width:100%;margin-bottom:10pt}'+
+      '.letterhead>div{display:table-cell;text-align:center;vertical-align:top;width:50%;font-size:12pt;line-height:1.35}'+
+      '.letterhead .left b,.letterhead .right b{font-weight:bold;text-transform:uppercase}'+
+      '.letterhead .line{display:inline-block;width:40%;border-top:1pt solid #000;margin-top:3pt}'+
+      '.letterhead .right .motto{font-style:italic;font-weight:bold}'+
+      '.title{text-align:center;margin:14pt 0 8pt}'+
+      '.title h1{font-size:16pt;font-weight:bold;text-transform:uppercase;margin:0 0 4pt}'+
+      '.title .year{font-size:13pt;font-weight:bold;font-style:italic;margin-top:6pt}'+
+      'table{width:100%;border-collapse:collapse;margin-top:10pt;font-size:12pt;page-break-inside:auto}'+
+      'tr{page-break-inside:avoid;page-break-after:auto}'+
+      'thead{display:table-header-group}'+
+      'th,td{border:1pt solid #000;padding:5pt 7pt;vertical-align:top;line-height:1.35}'+
+      'th{background:#d6e5f3 !important;text-align:center;font-weight:bold;font-size:12pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+      'tr.cat-row td{background:#0c5da5 !important;color:white !important;font-size:13pt;padding:6pt 8pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+      'tr.grp-row.d1 td{background:#dbeafe !important;font-size:12.5pt;padding:5pt 8pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+      'tr.grp-row.d2 td{background:#eff6fc !important;font-size:12pt;padding:4pt 10pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+      'tr.grp-row.d3 td{background:#f8fafc !important;font-size:12pt;padding:4pt 14pt;font-style:italic;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+      '.col-stt{width:5%}.col-ma{width:12%}.col-ten{width:60%}.col-resp{width:23%}'+
+      '.sign{margin-top:24pt;display:table;width:100%}'+
+      '.sign-box{display:table-cell;text-align:center;width:45%;vertical-align:top;font-size:13pt}'+
+      '.sign .spacer{display:table-cell;width:10%}'+
+      '.sign .loc{font-style:italic;margin-bottom:4pt;font-size:12pt}'+
+      '.sign .role{font-weight:bold;text-transform:uppercase;margin-bottom:3pt}'+
+      '.sign .note{font-style:italic;font-size:12pt;margin-bottom:50pt}'+
+      '.sign .name{font-weight:bold;font-size:13pt}'+
+      '.footnote{margin-top:16pt;font-size:11pt;color:#333;font-style:italic;text-align:center;border-top:1px dashed #999;padding-top:6pt}'+
+      '@media print{.no-print{display:none}}'+
+      '.print-bar{position:fixed;top:10px;right:10px;background:#0c5da5;color:white;padding:10px 18px;border-radius:999px;font-family:sans-serif;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:9999}'+
+      '.print-bar button{background:white;color:#0c5da5;border:none;padding:6px 14px;border-radius:999px;font-weight:bold;margin-left:10px;cursor:pointer;font-family:inherit}'+
+      '</style></head><body>'+
+      '<div class="no-print print-bar">👁 Xem trước bản in <button onclick="window.print()">🖨 In ngay</button> <button onclick="window.close()" style="background:#dc2626;color:white">✕ Đóng</button></div>'+
+      '<div class="letterhead">'+
+        '<div class="left"><b>'+escapeHtml(ubndLocation)+'</b><br><b>'+escapeHtml(schoolName)+'</b><br><span class="line"></span></div>'+
+        '<div class="right"><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b><br><span class="motto">Độc lập - Tự do - Hạnh phúc</span><br><span class="line"></span></div>'+
+      '</div>'+
+      '<div class="title">'+
+        '<h1>DANH MỤC HỒ SƠ SỐ</h1>'+
+        (schoolYear ? '<div class="year">Năm học: '+escapeHtml(schoolYear)+'</div>' : '') +
+      '</div>'+
+      '<table>'+
+        '<thead><tr>'+
+          '<th class="col-stt">STT</th>'+
+          '<th class="col-ma">Mã hồ sơ</th>'+
+          '<th class="col-ten">Danh mục Hồ sơ</th>'+
+          '<th class="col-resp">Người phụ trách</th>'+
+        '</tr></thead>'+
+        '<tbody>'+tbody+'</tbody>'+
+      '</table>'+
+      '<div class="sign">'+
+        '<div class="sign-box">'+
+          '<div class="role">Người lập danh mục</div>'+
+          '<div class="note">(Ký, ghi rõ họ tên)</div>'+
+          '<div class="name">&nbsp;</div>'+
+        '</div>'+
+        '<div class="spacer"></div>'+
+        '<div class="sign-box">'+
+          '<div class="loc">'+escapeHtml(locShort)+', ngày '+dd+' tháng '+mm+' năm '+yy+'</div>'+
+          '<div class="role">Hiệu trưởng</div>'+
+          '<div class="note">(Ký, ghi rõ họ tên, đóng dấu)</div>'+
+          '<div class="name">'+escapeHtml(principal||'')+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="footnote">Tổng số: '+totalCats+' nhóm lớn · '+totalLeaves+' hồ sơ</div>'+
+      '</body></html>';
+
+    // iframe ẩn để in
+    let iframe = document.getElementById('hssPrintFrame');
+    if(iframe) iframe.remove();
+    iframe = document.createElement('iframe');
+    iframe.id = 'hssPrintFrame';
+    iframe.style.cssText = 'position:fixed;right:-9999px;bottom:-9999px;width:0;height:0;border:0';
+    document.body.appendChild(iframe);
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    doc.open();
+    doc.write(html);
+    doc.close();
+    setTimeout(() => {
+      try {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      } catch(e) {
+        const w = window.open('', '_blank');
+        if(w){ w.document.write(html); w.document.close(); w.focus(); setTimeout(() => w.print(), 400); }
+        else alert('Trình duyệt chặn cửa sổ in. Vui lòng cho phép popup và thử lại.');
+      }
+    }, 500);
+  }
+
   // Search minh chứng
   document.getElementById('mcSearch').addEventListener('input', function(e){
     const q = e.target.value.trim().toLowerCase();
@@ -3539,6 +3877,7 @@
     IMAGES = data.images || [];
     MINHCHUNG = mergeMCSeed(data.minhChung);
     STATS = data.stats || {};
+    FOLDER_STATUS = data.folderStatus || {items:{}, lastChecked:null};
     renderCarousel();
     renderAbout();
     renderStats();
@@ -3893,51 +4232,56 @@
       wrap.innerHTML = '<p style="padding:20px;text-align:center;color:#94a3b8">Không tìm thấy hồ sơ.</p>';
       return;
     }
-    let html = '<table class="adm-edit-table"><thead><tr><th style="width:28px"></th><th>Tên hồ sơ</th><th style="width:38%">Link Google Drive</th><th style="width:36px"></th></tr></thead><tbody>';
+    let html = `<table class="adm-edit-table"><thead><tr>
+      <th style="width:24px"></th>
+      <th style="width:78px">Mã hồ sơ</th>
+      <th>Danh mục Hồ sơ</th>
+      <th style="width:24%">Link Google Drive</th>
+      <th style="width:18%">Người phụ trách</th>
+      <th style="width:36px"></th>
+    </tr></thead><tbody>`;
     rows.forEach((r, i) => {
-      const indent = r.depth > 0 ? 'padding-left:' + (r.depth * 16) + 'px' : '';
-      const isBold = !r.leaf;
-      const dot = r.leaf ? (r.has ? '<span style="color:#3fb28c">●</span>' : '<span style="color:#cbd3cf">●</span>') : '📂';
-      html += `<tr data-idx="${i}">
+      const isGroup = !r.leaf;
+      const dot = r.leaf ? (r.has ? '<span style="color:#15803d;font-size:1.1rem">●</span>' : '<span style="color:#cbd5e1;font-size:1.1rem">●</span>') : '<span style="font-size:.95rem">📂</span>';
+      const groupBg = isGroup ? 'background:#f8fafc' : '';
+      const codeStyle = isGroup ? 'font-weight:600;color:var(--g-deep);background:#eef4fb' : '';
+      const nameStyle = isGroup ? 'font-weight:600;color:var(--g-deep)' : '';
+      html += `<tr data-idx="${i}" style="${groupBg}">
         <td class="row-status">${dot}</td>
-        <td style="${indent}">
-          <span id="hssN${i}" style="${isBold?'font-weight:600;color:var(--g-deep)':''}" ondblclick="admHssEdit(${i})"><span style="color:#94a3b8;font-size:.72rem;margin-right:4px">${escapeHtml(r.code)}.</span>${escapeHtml(r.name)}</span>
-          <input type="text" id="hssI${i}" value="${escapeHtml(r.name)}" style="display:none" onblur="admHssCommit(${i})" onkeydown="if(event.key==='Enter')this.blur()">
-        </td>
-        <td>${r.leaf ? `<input type="text" value="${escapeHtml(r.link)}" placeholder="Dán link Drive..." onchange="admHssLink(${i},this.value)">` : ''}</td>
-        <td><button onclick="admHssEdit(${i})" style="background:none;border:none;cursor:pointer;font-size:.85rem;padding:2px 4px;border-radius:4px;opacity:.45" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.45" title="Sửa tên">✏️</button></td>
+        <td><input type="text" value="${escapeHtml(r.code)}" onchange="admHssField(${i},'code',this.value)" style="${codeStyle}" title="Mã hồ sơ (vd: 1.1.1)"></td>
+        <td><input type="text" value="${escapeHtml(r.name)}" onchange="admHssField(${i},'name',this.value)" style="${nameStyle}" title="Tên danh mục"></td>
+        <td>${isGroup ? '<span style="color:#cbd5e1;padding-left:8px">—</span>' : `<input type="text" value="${escapeHtml(r.link)}" placeholder="https://drive.google.com/..." onchange="admHssField(${i},'link',this.value)" title="Link Drive folder">`}</td>
+        <td>${isGroup ? '<span style="color:#cbd5e1;padding-left:8px">—</span>' : `<input type="text" value="${escapeHtml(r.assign||'')}" placeholder="VD: Hiệu trưởng" onchange="admHssField(${i},'assign',this.value)" title="Người phụ trách (vai trò)">`}</td>
+        <td style="text-align:center"><button onclick="admHssDelete(${i})" title="Xóa dòng" style="background:none;border:none;cursor:pointer;font-size:.95rem;color:#dc2626;padding:2px 6px;border-radius:4px;opacity:.4" onmouseover="this.style.opacity=1;this.style.background='#fef2f2'" onmouseout="this.style.opacity=.4;this.style.background='none'">🗑</button></td>
       </tr>`;
     });
     html += '</tbody></table>';
     wrap.innerHTML = html;
   }
 
-  function admHssEdit(i){
-    const span = document.getElementById('hssN'+i);
-    const inp = document.getElementById('hssI'+i);
-    if(!span||!inp) return;
-    span.style.display='none'; inp.style.display=''; inp.focus(); inp.select();
+  function admHssField(i, field, val){
+    if(_hssRawRows[i]) _hssRawRows[i][field] = String(val || '').trim();
   }
-  function admHssCommit(i){
-    const span = document.getElementById('hssN'+i);
-    const inp = document.getElementById('hssI'+i);
-    if(!span||!inp) return;
-    const v = inp.value.trim();
-    if(v && _hssRawRows[i]){
-      _hssRawRows[i].name = v;
-      const code = '<span style="color:#94a3b8;font-size:.72rem;margin-right:4px">'+escapeHtml(_hssRawRows[i].code)+'.</span>';
-      span.innerHTML = code + escapeHtml(v);
+
+  function admHssDelete(i){
+    if(!_hssRawRows[i]) return;
+    const r = _hssRawRows[i];
+    if(!confirm('Xóa dòng "' + r.code + '. ' + r.name + '"?\nCần nhấn "💾 Lưu thay đổi" sau đó để áp dụng lên Google Sheet.')) return;
+    _hssRawRows.splice(i, 1);
+    admRenderHSSTable(_hssRawRows);
+    const msg = document.getElementById('admHssMsg');
+    if(msg){
+      msg.textContent = '🗑 Đã xoá "' + r.code + '". Nhấn "💾 Lưu thay đổi" để ghi lên Sheet.';
+      msg.className = 'adm-alert warn';
+      setTimeout(() => msg.className = 'adm-alert', 4000);
     }
-    span.style.display=''; inp.style.display='none';
-  }
-  function admHssLink(i, val){
-    if(_hssRawRows[i]) _hssRawRows[i].link = val.trim();
   }
 
   function admAddHSS(){
     const code = document.getElementById('admNewCode').value.trim();
     const name = document.getElementById('admNewName').value.trim();
     const link = document.getElementById('admNewLink').value.trim();
+    const assign = document.getElementById('admNewAssign').value.trim();
     const msg = document.getElementById('admHssMsg');
     if(!code || !name){
       msg.textContent = '❌ Vui lòng nhập mã và tên danh mục hồ sơ.';
@@ -3948,7 +4292,7 @@
     // Xác định depth từ mã (1 = depth 0, 1.1 = depth 1, 1.1.1 = depth 2, ...)
     const depth = (code.match(/\./g) || []).length;
     const isLeaf = !!link; // có link = hồ sơ lá
-    const newRow = { code, name, link, assign:'', leaf: isLeaf, has: !!link, depth };
+    const newRow = { code, name, link, assign, leaf: isLeaf, has: !!link, depth };
 
     // Chèn vào vị trí đúng theo mã
     let insertAt = _hssRawRows.length;
@@ -3964,6 +4308,7 @@
     document.getElementById('admNewCode').value = '';
     document.getElementById('admNewName').value = '';
     document.getElementById('admNewLink').value = '';
+    document.getElementById('admNewAssign').value = '';
     msg.textContent = '✅ Đã thêm "' + code + '. ' + name + '". Nhấn "Lưu thay đổi" để ghi lên Sheet.';
     msg.className = 'adm-alert ok';
     setTimeout(() => msg.className = 'adm-alert', 4000);
@@ -4380,6 +4725,58 @@
       document.body.appendChild(s);
     }
     setTimeout(() => location.reload(), 500);
+  }
+
+  // Quét trạng thái Drive folder ngay (admin tab Hệ thống)
+  function admRefreshFolderStatus(btn){
+    if(!btn) return;
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Đang quét... (30-60s)';
+    const msgEl = document.getElementById('admSysMsg');
+    if(msgEl){ msgEl.textContent = ''; msgEl.className = 'adm-alert'; }
+
+    fetch(getApiUrl(), {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({action:'refreshFolderStatus'})
+    })
+    .then(r => r.json())
+    .then(resp => {
+      if(!resp || !resp.ok){
+        if(msgEl){
+          msgEl.innerHTML = '❌ Lỗi: ' + escapeHtml(resp && resp.error ? resp.error : 'Không rõ');
+          msgEl.className = 'adm-alert err';
+        }
+        btn.disabled = false; btn.innerHTML = original;
+        return;
+      }
+      const r = resp.data || {};
+      const s = r.stats || {};
+      if(msgEl){
+        msgEl.innerHTML = '✅ Đã quét ' + (r.refreshed||0) + ' hồ sơ — ' +
+          '🟢 Đã có: ' + (s.ok||0) + ' · 🔴 Trống: ' + (s.empty||0) +
+          ' · ⚪ Chưa link: ' + (s.noLink||0) + ' · ⚠ Lỗi: ' + (s.error||0);
+        msgEl.className = 'adm-alert ok';
+      }
+      // Reload data để frontend có folderStatus mới
+      try{ localStorage.removeItem(CACHE_KEY); } catch(e){}
+      fetchGAS(function(freshData){
+        _cacheSave(freshData);
+        boot(freshData, false);
+        btn.disabled = false; btn.innerHTML = '✅ Đã quét xong';
+        setTimeout(() => { btn.innerHTML = original; }, 4000);
+      }, function(){
+        btn.disabled = false; btn.innerHTML = original;
+      });
+    })
+    .catch(err => {
+      if(msgEl){
+        msgEl.innerHTML = '❌ Lỗi kết nối: ' + escapeHtml(String(err.message || err));
+        msgEl.className = 'adm-alert err';
+      }
+      btn.disabled = false; btn.innerHTML = original;
+    });
   }
 
   function admClearCache(){
