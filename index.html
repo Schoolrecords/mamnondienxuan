@@ -2347,7 +2347,7 @@
 
           <h4 style="font-family:'Fraunces',serif;color:var(--g-deep);margin:24px 0 8px">📁 Trạng thái Drive folder</h4>
           <p style="font-size:.82rem;color:#64748b;margin-bottom:10px">Quét tất cả 77 folder Drive của Hồ sơ số → cập nhật cột "Trạng thái" (Đã có / Chưa có) trên giao diện. Mặc định auto-quét mỗi đêm 02:00. Nút này dùng khi cần quét ngay (vd: vừa upload file mới).</p>
-          <p style="font-size:.78rem;color:#94a3b8;margin-bottom:10px">⏱ Quét mất ~30-60 giây tùy số folder. KHÔNG đóng tab khi đang quét.</p>
+          <p style="font-size:.78rem;color:#94a3b8;margin-bottom:10px">⏱ Quét mất ~60-120 giây tùy số folder + độ sâu cấu trúc subfolder. KHÔNG đóng tab khi đang quét.</p>
           <div class="adm-actions">
             <button class="adm-btn adm-btn-outline" onclick="admRefreshFolderStatus(this)">🔄 Quét trạng thái Drive ngay</button>
           </div>
@@ -2795,12 +2795,12 @@
       <button class="refresh-btn" onclick="refreshFolderStatusFE(this)">🔄 Kiểm tra ngay</button>`;
   }
 
-  // Gọi backend refreshFolderStatus → đợi 30-50s → reload data → re-render
+  // Gọi backend refreshFolderStatus → đợi ~60-120s (đệ quy quét cả subfolder) → reload data → re-render
   window.refreshFolderStatusFE = function(btn){
     if(!btn) return;
     const original = btn.innerHTML;
     btn.disabled = true;
-    btn.innerHTML = '⏳ Đang kiểm tra... (30-60s)';
+    btn.innerHTML = '⏳ Đang kiểm tra... (60-120s)';
     fetch(getApiUrl(), {
       method:'POST',
       headers:{'Content-Type':'text/plain;charset=utf-8'}, // tránh CORS preflight
@@ -4732,7 +4732,7 @@
     if(!btn) return;
     const original = btn.innerHTML;
     btn.disabled = true;
-    btn.innerHTML = '⏳ Đang quét... (30-60s)';
+    btn.innerHTML = '⏳ Đang quét... (60-120s)';
     const msgEl = document.getElementById('admSysMsg');
     if(msgEl){ msgEl.textContent = ''; msgEl.className = 'adm-alert'; }
 
